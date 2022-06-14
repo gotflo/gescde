@@ -25,17 +25,7 @@ import javax.validation.constraints.Size;
  */
 @Entity
 @Table(name = "user")
-@NamedQueries({
-        @NamedQuery(name = "User.findAll", query = "SELECT u FROM User u"),
-        @NamedQuery(name = "User.findByUsernameAndPassword", query = "SELECT u FROM User u WHERE u.username = :username and u.password=:password"),
-        @NamedQuery(name = "User.findByUsername", query = "SELECT u FROM User u WHERE u.username = :username"),
-        @NamedQuery(name = "User.findByFirstName", query = "SELECT u FROM User u WHERE u.firstName = :firstName"),
-        @NamedQuery(name = "User.findByLastName", query = "SELECT u FROM User u WHERE u.lastName = :lastName"),
-        @NamedQuery(name = "User.findByEmail", query = "SELECT u FROM User u WHERE u.email = :email"),
-        @NamedQuery(name = "User.findByPassword", query = "SELECT u FROM User u WHERE u.password = :password"),
-        @NamedQuery(name = "User.findByAdminRole", query = "SELECT u FROM User u WHERE u.adminRole = :adminRole")})
 public class User extends AbstractEntity {
-
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
@@ -68,8 +58,6 @@ public class User extends AbstractEntity {
     @NotNull
     @Column(name = "admin_role")
     private Character adminRole;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
-    private List<TaskLog> taskLogList;
 
     public User() {
     }
@@ -133,14 +121,6 @@ public class User extends AbstractEntity {
 
     public void setAdminRole(Character adminRole) {
         this.adminRole = adminRole;
-    }
-
-    public List<TaskLog> getTaskLogList() {
-        return taskLogList;
-    }
-
-    public void setTaskLogList(List<TaskLog> taskLogList) {
-        this.taskLogList = taskLogList;
     }
 
     @Override

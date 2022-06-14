@@ -1,8 +1,5 @@
 package com.mycompany.projectmanager.service;
 
-import com.mycompany.projectmanager.entities.Project;
-import com.mycompany.projectmanager.entities.Task;
-import com.mycompany.projectmanager.entities.TaskLog;
 import com.mycompany.projectmanager.entities.User;
 import com.mycompany.projectmanager.repo.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +10,6 @@ import org.springframework.data.domain.Sort;
 import org.springframework.data.repository.query.FluentQuery;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.function.Function;
@@ -90,10 +86,8 @@ public class UserService implements UserRepo {
 
     @Override
     public User save(User user ) {
-        List <TaskLog> taskLogs = new ArrayList<>();
         Character adminRole = 'U';
         user.setAdminRole(adminRole);
-        user.setTaskLogList(taskLogs);
         return userRepo.save(user);
     }
 

@@ -2,7 +2,7 @@ package com.mycompany.projectmanager.web.controller;
 
 
 
-import com.mycompany.projectmanager.entities.Task;
+
 import com.mycompany.projectmanager.repo.ResourceNotFoundException;
 import com.mycompany.projectmanager.repo.UserRepo;
 import com.mycompany.projectmanager.entities.User;
@@ -64,11 +64,6 @@ public class UserController implements Serializable {
         return new ResponseEntity<>(users, HttpStatus.OK);
     }
 
-    @RequestMapping(value = {"/logout"}, method = RequestMethod.POST)
-    public String logoutUser(HttpServletRequest request, HttpServletRequest response){
-        return "redirect:/login";
-    }
-
 
     @GetMapping("/userSize")
     public ResponseEntity<Long> UserSize(){
@@ -82,36 +77,6 @@ public class UserController implements Serializable {
         return ResponseEntity.ok().body(users);
     }
 
-
-//    @PostMapping("/userSave")
-//    public ResponseEntity<User>registerUser(@RequestBody User user){
-//        return ResponseEntity.ok(userRepo.saveUser(user));
-//    }
-    
-//    public User save (@PathVariable User user){
-//            return userRepo.saveUser(user);
-//        }
-//    
-    /*@GetMapping("/user")
-    public List<User> findUser(){
-        return userRepo.findAll();
-    }*/
-//    @CrossOrigin(origins = "*")
-
-
-    
-    
-    
-
-//    @PostMapping("/login")
-//    public ResponseEntity<?>loginUser(@RequestBody User userData){
-//            System.out.println(userData);
-//        User user = userRepo.findByUsername(userData.getUsername());
-//        if(user.getPassword().equals(userData.getPassword()))
-//            return ResponseEntity.ok(user);
-//        
-//        return (ResponseEntity<?>) ResponseEntity.internalServerError();
-//    }
-
+//
 
 }
