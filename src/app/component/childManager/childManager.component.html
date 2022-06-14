@@ -1,0 +1,1057 @@
+<div class="p-3 card-header bg-success" style="height: 2.9rem">
+  <h4 class="display: flex">Enregistrement des informations sur un enfant</h4>
+  <span class="mt-5">
+    <strong>NB :</strong> Veillez renseignez tous les
+    <strong> champs obligatoire</strong></span
+  >
+</div>
+<form
+  class="form pt-4"
+  #addchildform="ngForm"
+  (ngSubmit)="addChild(addchildform)"
+>
+  <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1 card1">
+    <div class="row">
+      <div class="card2">
+        <!-- numeroBeneficiaire -->
+        <div class="mb-3 flex gauche">
+          <label
+            for="numeroBeneficiaire"
+            class="form-label"
+            style="color: black"
+            >N° Bénéficiare</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="numeroBeneficiaire"
+            id="numeroBeneficiaire"
+            required
+            [(ngModel)]="child.numeroBeneficiaire"
+            aria-describedby="emailHelp"
+            onkeyup="isEmpty()"
+            style="text-transform: uppercase"
+          />
+          <div id="emailHelp" class="form-text">Champ obligatoire</div>
+        </div>
+        <!-- lastNameChild -->
+        <div class="mb-3 flex milieu">
+          <label for="lastNameChild" class="form-label" style="color: black"
+            >Nom de famille</label
+          >
+          <input
+            type="name"
+            class="form-control"
+            name="lastNameChild"
+            id="lastNameChild"
+            required
+            [(ngModel)]="child.lastNameChild"
+            style="text-transform: uppercase"
+            aria-describedby="emailHelp"
+            onkeyup="isEmpty()"
+          />
+          <div id="emailHelp" class="form-text">Champ obligatoire</div>
+        </div>
+        <!-- firstNameChild -->
+        <div class="mb-3 flex droit">
+          <label for="firstNameChild" class="form-label" style="color: black"
+            >Prénoms</label
+          >
+          <input
+            type="name"
+            class="form-control"
+            id="firstNameChild"
+            name="firstNameChild"
+            required
+            [(ngModel)]="child.firstNameChild"
+            style="text-transform: capitalize"
+            aria-describedby="emailHelp"
+            onkeyup="isEmpty()"
+          />
+          <div id="emailHelp" class="form-text">Champ obligatoire</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1 card1Naiss">
+    <div class="row">
+      <div class="card2Naiss">
+        <!-- jourNaiss -->
+        <div class="form-group flex gaucheDay">
+          <label for="jourNaiss">Jour</label>
+          <select (change)="ChangeDepartmentDays($event)" class="form-control">
+            <option selected disabled>Jour de naissance</option>
+            <option
+              name="jourNaiss"
+              id="jourNaiss"
+              required
+              [(ngModel)]="selectedValueDays"
+              value="1"
+            >
+              1
+            </option>
+            <option
+              name="jourNaiss"
+              required
+              id="jourNaiss"
+              [(ngModel)]="selectedValueDays"
+              value="2"
+            >
+              2
+            </option>
+            <option
+              name="jourNaiss"
+              required
+              id="jourNaiss"
+              [(ngModel)]="selectedValueDays"
+              value="3"
+            >
+              3
+            </option>
+            <option
+              name="jourNaiss"
+              required
+              id="jourNaiss"
+              [(ngModel)]="selectedValueDays"
+              value="4"
+            >
+              4
+            </option>
+            <option
+              name="jourNaiss"
+              required
+              [(ngModel)]="selectedValueDays"
+              value="5"
+            >
+              5
+            </option>
+            <option
+              name="jourNaiss"
+              required
+              id="jourNaiss"
+              [(ngModel)]="selectedValueDays"
+              value="6"
+            >
+              6
+            </option>
+            <option
+              name="jourNaiss"
+              required
+              id="jourNaiss"
+              [(ngModel)]="selectedValueDays"
+              value="7"
+            >
+              7
+            </option>
+            <option
+              name="jourNaiss"
+              required
+              id="jourNaiss"
+              [(ngModel)]="selectedValueDays"
+              value="8"
+            >
+              8
+            </option>
+            <option
+              name="jourNaiss"
+              required
+              id="jourNaiss"
+              [(ngModel)]="selectedValueDays"
+              value="9"
+            >
+              9
+            </option>
+            <option
+              name="jourNaiss"
+              required
+              id="jourNaiss"
+              [(ngModel)]="selectedValueDays"
+              value="10"
+            >
+              10
+            </option>
+            <option
+              name="jourNaiss"
+              required
+              id="jourNaiss"
+              [(ngModel)]="selectedValueDays"
+              value="11"
+            >
+              11
+            </option>
+            <option
+              name="jourNaiss"
+              required
+              id="jourNaiss"
+              [(ngModel)]="selectedValueDays"
+              value="12"
+            >
+              12
+            </option>
+            <option
+              name="jourNaiss"
+              required
+              id="jourNaiss"
+              [(ngModel)]="selectedValueDays"
+              value="13"
+            >
+              13
+            </option>
+            <option
+              name="jourNaiss"
+              required
+              id="jourNaiss"
+              [(ngModel)]="selectedValueDays"
+              value="14"
+            >
+              14
+            </option>
+            <option
+              name="jourNaiss"
+              required
+              id="jourNaiss"
+              [(ngModel)]="selectedValueDays"
+              value="15"
+            >
+              15
+            </option>
+            <option
+              name="jourNaiss"
+              required
+              id="jourNaiss"
+              [(ngModel)]="selectedValueDays"
+              value="16"
+            >
+              16
+            </option>
+            <option
+              name="jourNaiss"
+              required
+              id="jourNaiss"
+              [(ngModel)]="selectedValueDays"
+              value="17"
+            >
+              17
+            </option>
+            <option
+              name="jourNaiss"
+              required
+              id="jourNaiss"
+              [(ngModel)]="selectedValueDays"
+              value="18"
+            >
+              18
+            </option>
+            <option
+              name="jourNaiss"
+              required
+              id="jourNaiss"
+              [(ngModel)]="selectedValueDays"
+              value="19"
+            >
+              19
+            </option>
+            <option
+              name="jourNaiss"
+              required
+              id="jourNaiss"
+              [(ngModel)]="selectedValueDays"
+              value="20"
+            >
+              20
+            </option>
+            <option
+              name="jourNaiss"
+              required
+              id="jourNaiss"
+              [(ngModel)]="selectedValueDays"
+              value="21"
+            >
+              21
+            </option>
+            <option
+              name="jourNaiss"
+              required
+              id="jourNaiss"
+              [(ngModel)]="selectedValueDays"
+              value="22"
+            >
+              22
+            </option>
+            <option
+              name="jourNaiss"
+              required
+              id="jourNaiss"
+              [(ngModel)]="selectedValueDays"
+              value="23"
+            >
+              23
+            </option>
+            <option
+              name="jourNaiss"
+              required
+              id="jourNaiss"
+              [(ngModel)]="selectedValueDays"
+              value="24"
+            >
+              24
+            </option>
+            <option
+              name="jourNaiss"
+              required
+              id="jourNaiss"
+              [(ngModel)]="selectedValueDays"
+              value="25"
+            >
+              25
+            </option>
+            <option
+              name="jourNaiss"
+              required
+              id="jourNaiss"
+              [(ngModel)]="selectedValueDays"
+              value="26"
+            >
+              26
+            </option>
+            <option
+              name="jourNaiss"
+              required
+              id="jourNaiss"
+              [(ngModel)]="selectedValueDays"
+              value="27"
+            >
+              27
+            </option>
+            <option
+              name="jourNaiss"
+              required
+              id="jourNaiss"
+              [(ngModel)]="selectedValueDays"
+              value="28"
+            >
+              28
+            </option>
+            <option
+              name="jourNaiss"
+              required
+              id="jourNaiss"
+              [(ngModel)]="selectedValueDays"
+              value="29"
+            >
+              29
+            </option>
+            <option
+              name="jourNaiss"
+              required
+              id="jourNaiss"
+              [(ngModel)]="selectedValueDays"
+              value="30"
+            >
+              30
+            </option>
+            <option
+              name="jourNaiss"
+              required
+              id="jourNaiss"
+              [(ngModel)]="selectedValueDays"
+              value="31"
+            >
+              31
+            </option>
+          </select>
+          <div id="emailHelp" class="form-text">Champ obligatoire</div>
+        </div>
+        <!-- moisNaiss -->
+        <div class="form-group flex milieuMonth">
+          <label for="moisNaiss">Mois</label>
+          <select (change)="ChangeDepartmentMonth($event)" class="form-control">
+            <option selected disabled>Mois de naissance</option>
+            <option
+              id="moisNaiss"
+              name="moisNaiss"
+              required
+              [(ngModel)]="selectedValueMonth"
+              value="1"
+            >
+              Janvier
+            </option>
+            <option
+              id="moisNaiss"
+              name="moisNaiss"
+              required
+              [(ngModel)]="selectedValueMonth"
+              value="2"
+            >
+              Février
+            </option>
+            <option
+              id="moisNaiss"
+              name="moisNaiss"
+              required
+              [(ngModel)]="selectedValueMonth"
+              value="3"
+            >
+              Mars
+            </option>
+            <option
+              id="moisNaiss"
+              name="moisNaiss"
+              required
+              [(ngModel)]="selectedValueMonth"
+              value="4"
+            >
+              Avril
+            </option>
+            <option
+              id="moisNaiss"
+              name="moisNaiss"
+              required
+              [(ngModel)]="selectedValueMonth"
+              value="5"
+            >
+              Mai
+            </option>
+            <option
+              id="moisNaiss"
+              name="moisNaiss"
+              required
+              [(ngModel)]="selectedValueMonth"
+              value="6"
+            >
+              Juin
+            </option>
+            <option
+              id="moisNaiss"
+              name="moisNaiss"
+              required
+              [(ngModel)]="selectedValueMonth"
+              value="7"
+            >
+              Juillet
+            </option>
+            <option
+              id="moisNaiss"
+              name="moisNaiss"
+              required
+              [(ngModel)]="selectedValueMonth"
+              value="8"
+            >
+              Août
+            </option>
+            <option
+              id="moisNaiss"
+              name="moisNaiss"
+              required
+              [(ngModel)]="selectedValueMonth"
+              value="9"
+            >
+              Septembre
+            </option>
+            <option
+              id="moisNaiss"
+              name="moisNaiss"
+              required
+              [(ngModel)]="selectedValueMonth"
+              value="10"
+            >
+              Octobre
+            </option>
+            <option
+              id="moisNaiss"
+              name="moisNaiss"
+              required
+              [(ngModel)]="selectedValueMonth"
+              value="11"
+            >
+              Novembre
+            </option>
+            <option
+              id="moisNaiss"
+              name="moisNaiss"
+              required
+              [(ngModel)]="selectedValueMonth"
+              value="12"
+            >
+              Décembre
+            </option>
+          </select>
+          <div id="emailHelp" class="form-text">Champ obligatoire</div>
+        </div>
+        <!-- anneNaiss -->
+
+        <div class="form-group flex droitYear">
+          <label for="anneNaiss">Année :</label>
+          <select class="form-control" (change)="ChangeDepartmentYear($event)">
+            <option selected disabled>Année de naissance</option>
+            <option
+              id="year"
+              name="anneNaiss"
+              required
+              [(ngModel)]="selectedValueYear"
+              value="{{ year }}"
+            >
+              {{ year }}
+            </option>
+            <option
+              id="year"
+              name="anneNaiss"
+              required
+              [(ngModel)]="selectedValueYear"
+              value="{{ year - 1 }}"
+            >
+              {{ year - 1 }}
+            </option>
+            <option
+              id="year"
+              name="anneNaiss"
+              required
+              [(ngModel)]="selectedValueYear"
+              value="{{ year - 1 }}"
+            >
+              {{ year - 1 }}
+            </option>
+            <option
+              id="year"
+              name="anneNaiss"
+              required
+              [(ngModel)]="selectedValueYear"
+              value="{{ year - 1 }}"
+            >
+              {{ year - 1 }}
+            </option>
+            <option
+              id="year"
+              name="anneNaiss"
+              required
+              [(ngModel)]="selectedValueYear"
+              value="{{ year - 2 }}"
+            >
+              {{ year - 2 }}
+            </option>
+            <option
+              id="year"
+              name="anneNaiss"
+              required
+              [(ngModel)]="selectedValueYear"
+              value="{{ year }}"
+              value="{{ year - 3 }}"
+            >
+              {{ year - 3 }}
+            </option>
+            <option
+              id="year"
+              name="anneNaiss"
+              required
+              [(ngModel)]="selectedValueYear"
+              value="{{ year - 4 }}"
+            >
+              {{ year - 4 }}
+            </option>
+            <option
+              id="year"
+              name="anneNaiss"
+              required
+              [(ngModel)]="selectedValueYear"
+              value="{{ year - 5 }}"
+            >
+              {{ year - 5 }}
+            </option>
+            <option
+              id="year"
+              name="anneNaiss"
+              required
+              [(ngModel)]="selectedValueYear"
+              value="{{ year - 6 }}"
+            >
+              {{ year - 6 }}
+            </option>
+            <option
+              id="year"
+              name="anneNaiss"
+              required
+              [(ngModel)]="selectedValueYear"
+              value="{{ year - 7 }}"
+            >
+              {{ year - 7 }}
+            </option>
+            <option
+              id="year"
+              name="anneNaiss"
+              required
+              [(ngModel)]="selectedValueYear"
+              value="{{ year - 8 }}"
+            >
+              {{ year - 8 }}
+            </option>
+            <option
+              id="year"
+              name="anneNaiss"
+              required
+              [(ngModel)]="selectedValueYear"
+              value="{{ year - 9 }}"
+            >
+              {{ year - 9 }}
+            </option>
+            <option
+              id="year"
+              name="anneNaiss"
+              required
+              [(ngModel)]="selectedValueYear"
+              value="{{ year - 10 }}"
+            >
+              {{ year - 10 }}
+            </option>
+            <option
+              id="year"
+              name="anneNaiss"
+              required
+              [(ngModel)]="selectedValueYear"
+              value="{{ year - 11 }}"
+            >
+              {{ year - 11 }}
+            </option>
+            <option
+              id="year"
+              name="anneNaiss"
+              required
+              [(ngModel)]="selectedValueYear"
+              value="{{ year - 12 }}"
+            >
+              {{ year - 12 }}
+            </option>
+            <option
+              id="year"
+              name="anneNaiss"
+              required
+              [(ngModel)]="selectedValueYear"
+              value="{{ year - 13 }}"
+            >
+              {{ year - 13 }}
+            </option>
+            <option
+              id="year"
+              name="anneNaiss"
+              required
+              [(ngModel)]="selectedValueYear"
+              value="{{ year - 14 }}"
+            >
+              {{ year - 14 }}
+            </option>
+            <option
+              id="year"
+              name="anneNaiss"
+              required
+              [(ngModel)]="selectedValueYear"
+              value="{{ year - 15 }}"
+            >
+              {{ year - 15 }}
+            </option>
+            <option
+              id="year"
+              name="anneNaiss"
+              required
+              [(ngModel)]="selectedValueYear"
+              value="{{ year - 16 }}"
+            >
+              {{ year - 16 }}
+            </option>
+            <option
+              id="year"
+              name="anneNaiss"
+              required
+              [(ngModel)]="selectedValueYear"
+              value="{{ year - 17 }}"
+            >
+              {{ year - 17 }}
+            </option>
+            <option
+              id="year"
+              name="anneNaiss"
+              required
+              [(ngModel)]="selectedValueYear"
+              value="{{ year - 18 }}"
+            >
+              {{ year - 18 }}
+            </option>
+            <option
+              id="year"
+              name="anneNaiss"
+              required
+              [(ngModel)]="selectedValueYear"
+              value="{{ year - 19 }}"
+            >
+              {{ year - 19 }}
+            </option>
+            <option
+              id="year"
+              name="anneNaiss"
+              required
+              [(ngModel)]="selectedValueYear"
+              value="{{ year - 20 }}"
+            >
+              {{ year - 20 }}
+            </option>
+            <option
+              id="year"
+              name="anneNaiss"
+              required
+              [(ngModel)]="selectedValueYear"
+              value="{{ year - 21 }}"
+            >
+              {{ year - 21 }}
+            </option>
+            <option
+              id="year"
+              name="anneNaiss"
+              required
+              [(ngModel)]="selectedValueYear"
+              value="{{ year - 22 }}"
+            >
+              {{ year - 22 }}
+            </option>
+            <option
+              id="year"
+              name="anneNaiss"
+              required
+              [(ngModel)]="selectedValueYear"
+              value="{{ year - 23 }}"
+            >
+              {{ year - 23 }}
+            </option>
+            <option
+              id="year"
+              name="anneNaiss"
+              required
+              [(ngModel)]="selectedValueYear"
+              value="{{ year - 24 }}"
+            >
+              {{ year - 24 }}
+            </option>
+            <option
+              id="year"
+              name="anneNaiss"
+              required
+              [(ngModel)]="selectedValueYear"
+              value="{{ year - 25 }}"
+            >
+              {{ year - 25 }}
+            </option>
+            <option
+              id="year"
+              name="anneNaiss"
+              required
+              [(ngModel)]="selectedValueYear"
+              value="{{ year - 26 }}"
+            >
+              {{ year - 26 }}
+            </option>
+            <option
+              id="year"
+              name="anneNaiss"
+              required
+              [(ngModel)]="selectedValueYear"
+              value="{{ year - 27 }}"
+            >
+              {{ year - 27 }}
+            </option>
+            <option
+              id="year"
+              name="anneNaiss"
+              required
+              [(ngModel)]="selectedValueYear"
+              value="{{ year - 28 }}"
+            >
+              {{ year - 28 }}
+            </option>
+            <option
+              id="year"
+              name="anneNaiss"
+              required
+              [(ngModel)]="selectedValueYear"
+              value="{{ year - 29 }}"
+            >
+              {{ year - 29 }}
+            </option>
+            <option
+              id="year"
+              name="anneNaiss"
+              required
+              [(ngModel)]="selectedValueYear"
+              value="{{ year - 30 }}"
+            >
+              {{ year - 30 }}
+            </option>
+            <option
+              id="year"
+              name="anneNaiss"
+              required
+              [(ngModel)]="selectedValueYear"
+              value="{{ year - 31 }}"
+            >
+              {{ year - 31 }}
+            </option>
+            <option
+              id="year"
+              name="anneNaiss"
+              required
+              [(ngModel)]="selectedValueYear"
+              value="{{ year - 32 }}"
+            >
+              {{ year - 32 }}
+            </option>
+            <option
+              id="year"
+              name="anneNaiss"
+              required
+              [(ngModel)]="selectedValueYear"
+              value="{{ year - 33 }}"
+            >
+              {{ year - 33 }}
+            </option>
+            <option
+              id="year"
+              name="anneNaiss"
+              required
+              [(ngModel)]="selectedValueYear"
+              value="{{ year - 35 }}"
+            >
+              {{ year - 35 }}
+            </option>
+            <option
+              id="year"
+              name="anneNaiss"
+              required
+              [(ngModel)]="selectedValueYear"
+              value="{{ year - 36 }}"
+            >
+              {{ year - 36 }}
+            </option>
+          </select>
+          <div id="emailHelp" class="form-text">Champ obligatoire</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="radioDate">
+    <div class="checkRadio" style="margin-right: 5rem">
+      <label class="form-label" style="color: black">Status</label>
+      <div class="form-check">
+        <input
+          class="form-check-input"
+          type="radio"
+          name="status"
+          id="status"
+          required
+          [(ngModel)]="selectedValueStatus"
+          value="Sponsorisé"
+        />
+        <!-- checked -->
+        <label class="form-check-label" for="exampleRadios1">
+          Sponsorisé
+        </label>
+      </div>
+      <div class="form-check">
+        <input
+          class="form-check-input"
+          type="radio"
+          name="status"
+          required
+          [(ngModel)]="selectedValueStatus"
+          id="status"
+          value="Non Sponsorisé"
+        />
+        <label class="form-check-label" for="exampleRadios2">
+          Non Sponsorisé
+        </label>
+      </div>
+    </div>
+    <!-- ///////////////////Gender//////////////////// -->
+    <div class="checkRadio" style="margin-right: 6rem">
+      <label class="form-label" style="color: black">Genre</label>
+      <div class="gender">
+        <div class="form-check form-check-inline">
+          <input
+            class="form-check-input"
+            type="radio"
+            id="gender"
+            name="gender"
+            required
+            [(ngModel)]="selectedValueGender"
+            value="M"
+          />
+          <label class="form-check-label" for="inlineRadio1">Masculin</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input
+            class="form-check-input"
+            type="radio"
+            name="gender"
+            required
+            [(ngModel)]="selectedValueGender"
+            id="gender"
+            value="F"
+          />
+          <label class="form-check-label" for="inlineRadio2">Féminin</label>
+        </div>
+      </div>
+    </div>
+
+    <!-- ////////////////DateEnter////////////////////////////// -->
+
+    <div class="mb-3">
+      <div class="form-group flex">
+        <label for="dateEntry">Année d'entrer</label>
+        <select
+          (change)="ChangeDepartmentYearEnter($event)"
+          class="form-control"
+        >
+          <option selected disabled>Année d'entrer</option>
+          <option
+            id="year"
+            name="dateEntry"
+            required
+            [(ngModel)]="selectedValueYearEnter"
+            value="{{ year }}"
+          >
+            {{ year }}
+          </option>
+          <option
+            id="year"
+            name="dateEntry"
+            required
+            [(ngModel)]="selectedValueYearEnter"
+            value="{{ year - 1 }}"
+          >
+            {{ year - 1 }}
+          </option>
+          <option
+            id="year"
+            name="dateEntry"
+            required
+            [(ngModel)]="selectedValueYearEnter"
+            value="{{ year - 2 }}"
+          >
+            {{ year - 2 }}
+          </option>
+          <option
+            id="year"
+            name="dateEntry"
+            required
+            [(ngModel)]="selectedValueYearEnter"
+            value="{{ year - 3 }}"
+          >
+            {{ year - 3 }}
+          </option>
+          <option
+            id="year"
+            name="dateEntry"
+            required
+            [(ngModel)]="selectedValueYearEnter"
+            value="{{ year - 4 }}"
+          >
+            {{ year - 4 }}
+          </option>
+          <option
+            id="year"
+            name="dateEntry"
+            required
+            [(ngModel)]="selectedValueYearEnter"
+            value="{{ year - 5 }}"
+          >
+            {{ year - 5 }}
+          </option>
+          <option
+            id="year"
+            name="dateEntry"
+            required
+            [(ngModel)]="selectedValueYearEnter"
+            value="{{ year - 6 }}"
+          >
+            {{ year - 6 }}
+          </option>
+          <option
+            id="year"
+            name="dateEntry"
+            required
+            [(ngModel)]="selectedValueYearEnter"
+            value="{{ year - 7 }}"
+          >
+            {{ year - 7 }}
+          </option>
+          <option
+            id="year"
+            name="dateEntry"
+            required
+            [(ngModel)]="selectedValueYearEnter"
+            value="{{ year - 8 }}"
+          >
+            {{ year - 8 }}
+          </option>
+          <option
+            id="year"
+            name="dateEntry"
+            required
+            [(ngModel)]="selectedValueYearEnter"
+            value="{{ year - 9 }}"
+          >
+            {{ year - 9 }}
+          </option>
+          <option
+            id="year"
+            name="dateEntry"
+            required
+            [(ngModel)]="selectedValueYearEnter"
+            value="{{ year - 10 }}"
+          >
+            {{ year - 10 }}
+          </option>
+        </select>
+        <div id="emailHelp" class="form-text">Champ obligatoire</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- /////////Info parrain////////// -->
+  <div class="parrainInfo">
+    <div class="mb-3" style="margin-right: 20rem">
+      <label for="parrainName" class="form-label" style="color: black"
+        >Nom & prénoms du tuteur
+      </label>
+      <input
+        type="name"
+        class="form-control"
+        id="parrainName"
+        name="parrainName"
+        required
+        [(ngModel)]="child.parrainName"
+        aria-describedby="emailHelp"
+        onkeyup="isEmpty()"
+      />
+      <div id="emailHelp" class="form-text">Champ obligatoire</div>
+    </div>
+    <div class="mb-3" style="color: black">
+      <label for="numeroParrain" class="form-label" style="color: black"
+        >Téléphone du tuteur</label
+      >
+      <input
+        type="name"
+        class="form-control"
+        id="numeroParrain"
+        name="numeroParrain"
+        required
+        [(ngModel)]="child.numeroParrain"
+        aria-describedby="emailHelp"
+        onkeyup="isEmpty()"
+        style="background: white"
+      />
+      <div id="emailHelp" class="form-text">Champ obligatoire</div>
+    </div>
+  </div>
+
+  <div style="margin-left: 28rem; margin-top: -1rem; padding-bottom: 2rem">
+    <button type="submit" id="btnChildSave" class="btn btn-primary" disabled>
+      Enrégistrer
+    </button>
+  </div>
+</form>

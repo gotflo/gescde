@@ -1,0 +1,200 @@
+<div class="p-3 card-header bg-success" style="height: 2.9rem">
+  <h4 class="display: flex">Enregistrement d'une activité :</h4>
+  <span class="mt-5">
+    <strong>NB :</strong> Veillez renseignez tous les
+    <strong> champs obligatoire</strong></span
+  >
+</div>
+
+<form
+  class="form"
+  #addactivityform="ngForm"
+  (ngSubmit)="addActivity(addactivityform)"
+>
+  <!-- ----------------------------- -->
+  <div>
+    <div class="radioDate pt-5">
+      <!-- ------------------------------------------------- -->
+
+      <!-- ///////////////////Gender//////////////////// -->
+      <div class="checkRadio" style="margin-right: 6rem">
+        <label class="form-label" style="color: black">Statut</label>
+        <div class="gender">
+          <div class="form-check form-check-inline">
+            <input
+              class="form-check-input"
+              type="radio"
+              name="finish"
+              id="finish"
+              required
+              [(ngModel)]="activity.finish"
+              value="true"
+            />
+            <label class="form-check-label" for="inlineRadio1">éffectuer</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input
+              class="form-check-input"
+              type="radio"
+              name="finish"
+              id="finish"
+              required
+              [(ngModel)]="activity.finish"
+              value="false"
+            />
+            <label class="form-check-label" for="inlineRadio2"
+              >Pas encore éffectuer</label
+            >
+          </div>
+        </div>
+      </div>
+
+      <!-- ////////////////DateEnter////////////////////////////// -->
+    </div>
+
+    <!-- -------------////////////////////////////////////////// -->
+    <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1 card1Naiss">
+      <div class="row">
+        <div class="card2Naiss">
+          <!-- jourNaiss -->
+
+          <div class="infochild2">
+            <div class="mb-3">
+              <div class="form-group flex" style="margin-left: -0.5rem">
+                <label for="dayActivity">Jour de l'activité</label>
+                <input
+                  type="dayActivity"
+                  class="form-control"
+                  id="dayActivity"
+                  name="dayActivity"
+                  minlength="1"
+                  maxlength="2"
+                  required
+                  [(ngModel)]="activity.dayActivity"
+                  aria-describedby="emailHelp"
+                  style="width: 9rem"
+                />
+                <div id="emailHelp" class="form-text">Champ obligatoire</div>
+              </div>
+            </div>
+            <!-- ///////////////////Gender//////////////////// -->
+            <div class="mb-3">
+              <div class="form-group flex" style="margin-left: -0.5rem">
+                <label for="monthActivity">Mois de l'activité</label>
+                <input
+                  type="name"
+                  class="form-control"
+                  id="monthActivity"
+                  name="monthActivity"
+                  minlength="1"
+                  maxlength="2"
+                  required
+                  [(ngModel)]="activity.monthActivity"
+                  aria-describedby="emailHelp"
+                  style="width: 9rem; margin-right: 8.5rem"
+                />
+                <div id="emailHelp" class="form-text">Champ obligatoire</div>
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <div class="form-group flex" style="margin-left: -0.5rem">
+                <label for="nameActivity">Désignation de l'activité</label>
+                <input
+                  type="nameActivity"
+                  class="form-control"
+                  id="nameActivity"
+                  name="nameActivity"
+                  required
+                  [(ngModel)]="activity.nameActivity"
+                  aria-describedby="emailHelp"
+                  style="width: 20rem"
+                />
+                <div id="emailHelp" class="form-text">Champ obligatoire</div>
+              </div>
+            </div>
+            <!-- anneNaiss -->
+            <!-- <div class="mb-3">
+            <div class="form-group flex" style="margin-left: -0.5rem">
+              <label for="monthActivity">Année</label>
+              <input
+                type="text"
+                class="form-control"
+                id="yearActivity"
+                value="{{ year }}"
+                minlength="4"
+                maxlength="4"
+                name="yearActivity"
+                placeholder="{{ year }}"
+                disabled
+                required
+                [(ngModel)]="year + activity.yearActivity"
+                aria-describedby="emailHelp"
+                style="width: 9rem; margin-right: 10.5rem"
+              />
+              <div id="emailHelp" class="form-text">Champ obligatoire</div>
+            </div>
+          </div> -->
+          </div>
+
+          <!-- <div class="form-group flex droitYear">
+          <label for="yearActivity">Année </label>
+          <select class="form-control" id="year" name="yearActivity">
+            <option selected disabled value="{{ year }}">{{ year }}</option>
+          </select>
+          <div id="emailHelp" class="form-text">Champ obligatoire</div>
+        </div> -->
+        </div>
+      </div>
+    </div>
+    <!-- ///////////////////////////////Infosupplémentaire/////////////// -->
+    <div class="infochild">
+      <!-- ///////////////////Gender//////////////////// -->
+      <div class="mb-3">
+        <div class="form-group flex" style="margin-left: -0.5rem">
+          <label for="descriptionActivity">Description de l'activité </label>
+
+          <textarea
+            class="form-control z-depth-1"
+            id="descriptionActivity"
+            name="descriptionActivity"
+            required
+            [(ngModel)]="activity.descriptionActivity"
+            rows="2"
+            style="background: rgb(248, 248, 248); width: 15rem"
+            placeholder="Description final de l'activité.."
+          ></textarea>
+          <div id="emailHelp" class="form-text">Champ obligatoire</div>
+        </div>
+      </div>
+
+      <!-- ////////////////DateEnter////////////////////////////// -->
+
+      <div class="mb-3">
+        <div class="form-group shadow-textarea flex" style="margin-left: -2rem">
+          <label for="exampleFormControlTextarea6"
+            >Description final de l'activité</label
+          >
+          <textarea
+            class="form-control z-depth-1"
+            id="descriptionActivityFinal"
+            name="descriptionActivityFinal"
+            required
+            [(ngModel)]="activity.descriptionActivityFinal"
+            rows="3"
+            style="background: rgb(248, 248, 248); width: 18rem"
+            placeholder="Description final de l'activité.."
+          ></textarea>
+        </div>
+      </div>
+    </div>
+
+    <!-- /////////Info parrain////////// -->
+
+    <div style="margin-left: 28rem; margin-top: 1rem">
+      <button type="submit" id="btnChildSave" class="btn btn-primary">
+        Valider
+      </button>
+    </div>
+  </div>
+</form>

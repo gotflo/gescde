@@ -1,0 +1,70 @@
+.TableBody {
+  // margin: 0;
+  // padding: 0;
+  // display: flex;
+  // justify-content: center;
+  // font-size: 14px;
+
+  .tableebody {
+    // width: 105%;
+    height: 50rem;
+    // // height: 405px;
+    // overflow-y: hidden;
+    overflow-x: hidden;
+    background-color: white;
+    box-shadow: -1px 5px 5px #929394de;
+    // margin-top: 50px;
+
+    tbody tr:hover {
+      background-color: #022252de;
+      color: white;
+      animation: alternate;
+      cursor: pointer;
+    }
+  }
+  table {
+    // width: 1095px;
+    // text-align: left;
+    // margin-left: -1.2rem;
+    // overflow: scroll;
+    // border-collapse: collapse;
+
+    thead {
+      text-align: center;
+      // font-size: 1em;
+      // padding: 10px;
+      background-color: rgb(31, 30, 30);
+      color: wheat;
+    }
+
+    tbody tr {
+      background-color: white;
+      border-bottom: 1px solid #ccc;
+      td {
+        // width: 160px;
+        // height: 10px;
+        text-align: center;
+      }
+    }
+    tbody tr:nth-child(odd) {
+      background-color: #f2f2f2;
+    }
+  }
+
+  // th:nth-child(1) {
+  //   width: 160px;
+  //   height: 20px;
+  //   position: absolute;
+  //   z-index: 1;
+  //   background: inherit;
+  //   padding: 10px;
+  // }
+  // td:nth-child(1) {
+  //   width: 160px;
+  //   height: 20px;
+  //   position: absolute;
+  //   z-index: 1;
+  //   background: inherit;
+  //   padding: 10px;
+  // }
+}

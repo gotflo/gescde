@@ -1,0 +1,49 @@
+<div class="card">
+  <div class="card-body">
+    <!-- title -->
+    <h4
+      class="card-title"
+      style="color: rgb(46, 45, 45); text-decoration: underline"
+    >
+      Liste des enfants qui fêtent leurs anniversaires
+    </h4>
+    <!-- <h5 class="card-subtitle">Overview of the projects</h5> -->
+
+    <!-- title -->
+    <div class="table-responsive">
+      <table class="table align-middle">
+        <thead>
+          <tr>
+            <th class="text-dark font-medium fs-4">N° Bénéficiaire</th>
+            <th class="text-dark font-medium fs-4">Nom</th>
+            <th class="text-dark font-medium fs-4">Prenoms</th>
+            <th class="text-dark font-medium fs-4">Date de naissance</th>
+            <th class="text-dark font-medium fs-4">Genre</th>
+            <th class="text-dark font-medium fs-4">Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let child of childs">
+            <td>
+              <div class="d-flex align-items-center">
+                <div class="ms-3">
+                  <h5 class="mb-0 font-medium">
+                    {{ child.numeroBeneficiaire }}
+                  </h5>
+                  <!-- <span class="text-muted">{{ ts.gmail }}</span> -->
+                </div>
+              </div>
+            </td>
+            <td class="fs-4">{{ child.lastNameChild }}</td>
+            <td class="fs-4">{{ child.firstNameChild }}</td>
+            <td class="fs-4">
+              {{ child.jourNaiss }}/{{ child.moisNaiss }}/{{ child.anneNaiss }}
+            </td>
+            <td class="fs-4">{{ child.gender }}</td>
+            <td class="fs-4">{{ child.status }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

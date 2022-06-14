@@ -1,0 +1,302 @@
+<div class="row">
+  <!-- ==================================-->
+  <!-- ======= Basic Nav ===== -->
+
+  <div class="col-12">
+    <div class="card" style="width: 101%">
+      <div class="p-3 card-header bg-success" style="height: 2.9rem">
+        <h4 class="display: flex">Projet des enfants</h4>
+      </div>
+      <div class="card-body border-top">
+        <ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-tabs">
+          <li [ngbNavItem]="1">
+            <a ngbNavLink>Projets</a>
+            <ng-template ngbNavContent>
+              <div class="card TableBody">
+                <div class="card-header btn-outline-info">
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div class="md-form">
+                        <input
+                          style="height: 2rem"
+                          placeholder="Recherche ..."
+                          type="text"
+                          [(ngModel)]="searchText"
+                          class="form-control"
+                          id="search"
+                          mdbInput
+                        />
+                        <!-- <label for="search">Search</label> -->
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="tableebody">
+                  <div class="card-body">
+                    <!-- title -->
+                    <!-- <h4
+            class="card-title"
+            style="color: rgb(46, 45, 45); text-decoration: underline"
+          >
+            Liste des enfants qui fêtent leurs anniversaires
+          </h4> -->
+                    <!-- <h5 class="card-subtitle">Overview of the projects</h5> -->
+
+                    <!-- title -->
+                    <div class="table-responsive">
+                      <table class="table align-middle">
+                        <thead>
+                          <tr>
+                            <th class="title" style="margin-right: -99px">#</th>
+
+                            <th class="title">Nom</th>
+                            <th class="title">Prenoms</th>
+                            <th class="title">Projet1</th>
+                            <th class="title">Projet2</th>
+                            <th class="title">Projet3</th>
+                            <th class="title">Projet4</th>
+                            <th class="title">Projet5</th>
+                            <th class="title">Projet6</th>
+                            <th class="title">Projet7</th>
+                            <th class="title">Projet8</th>
+                            <th class="title">Projet9</th>
+                            <th class="title">Projet10</th>
+                            <th class="title">Projet11</th>
+                            <th class="title">Projet12</th>
+
+                            <!-- <th class="title">Numéro du parrain</th> -->
+                            <th class="title">Action</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr
+                            *ngFor="
+                              let child of childs | filter: searchText;
+                              index as i
+                            "
+                            class="colorr"
+                          >
+                            <h5 class="title">
+                              {{ i + 1 }}
+                            </h5>
+
+                            <td style="text-transform: uppercase">
+                              {{ child.lastNameChild }}
+                            </td>
+                            <td style="text-transform: capitalize">
+                              {{ child.firstNameChild }}
+                            </td>
+                            <td style="text-transform: capitalize">
+                              {{ child.project1 }}
+                            </td>
+                            <td style="text-transform: capitalize">
+                              {{ child.project2 }}
+                            </td>
+                            <td style="text-transform: capitalize">
+                              {{ child.project3 }}
+                            </td>
+                            <td style="text-transform: capitalize">
+                              {{ child.project4 }}
+                            </td>
+                            <td style="text-transform: capitalize">
+                              {{ child.project5 }}
+                            </td>
+                            <td style="text-transform: capitalize">
+                              {{ child.project6 }}
+                            </td>
+                            <td style="text-transform: capitalize">
+                              {{ child.project7 }}
+                            </td>
+                            <td style="text-transform: capitalize">
+                              {{ child.project8 }}
+                            </td>
+                            <td style="text-transform: capitalize">
+                              {{ child.project9 }}
+                            </td>
+                            <td style="text-transform: capitalize">
+                              {{ child.project10 }}
+                            </td>
+                            <td style="text-transform: capitalize">
+                              {{ child.project11 }}
+                            </td>
+                            <td style="text-transform: capitalize">
+                              {{ child.project12 }}
+                            </td>
+                            <td>
+                              <!-- ------Enlever------ -->
+                              <span class="table-update">
+                                <button
+                                  type="button"
+                                  class="btn btn-outline-success btn-rounded btn-sm my-0"
+                                  data-mdb-ripple-color="dark"
+                                  style="margin-right: 2px"
+                                  (click)="
+                                    childProject(child.numeroBeneficiaire)
+                                  "
+                                >
+                                  <i class="bi bi-peace"></i>
+                                </button>
+                              </span>
+
+                              <!-- <span class="table-remove"
+                                ><button
+                                  type="button"
+                                  class="btn btn-outline-warning btn-rounded btn-sm my-0"
+                                  style="margin-right: 2px"
+                                  (click)="deleteTask()"
+                                >
+                                  <i class="bi bi-eye-fill"></i></button
+                              ></span> -->
+
+                              <!-- <span class="table-remove"
+                                ><button
+                                  type="button"
+                                  class="btn btn-danger btn-rounded btn-sm my-0"
+                                  style="margin-right: 2px"
+                                  (click)="deleteTask()"
+                                >
+                                  <i class="bi bi-trash"></i></button
+                              ></span> -->
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </ng-template>
+          </li>
+          <!-- <li [ngbNavItem]="2">
+            <a ngbNavLink>Two</a>
+            <ng-template ngbNavContent>
+              <p>
+                Exercitation +1 labore velit, blog sartorial PBR leggings next
+                level wes anderson artisan four loko farm-to-table craft beer
+                twee. Qui photo booth letterpress, commodo enim craft beer
+                mlkshk aliquip jean shorts ullamco ad vinyl cillum PBR. Homo
+                nostrud organic, assumenda labore aesthetic magna delectus
+                mollit. Keytar helvetica VHS salvia yr, vero magna velit
+                sapiente labore stumptown. Vegan fanny pack odio cillum wes
+                anderson 8-bit, sustainable jean shorts beard ut DIY ethical
+                culpa terry richardson biodiesel. Art party scenester stumptown,
+                tumblr butcher vero sint qui sapiente accusamus tattooed echo
+                park.
+              </p>
+            </ng-template>
+          </li>
+          <li [ngbNavItem]="3">
+            <a ngbNavLink>Three</a>
+            <ng-template ngbNavContent>
+              <p>
+                Sed commodo, leo at suscipit dictum, quam est porttitor sapien,
+                eget sodales nibh elit id diam. Nulla facilisi. Donec egestas
+                ligula vitae odio interdum aliquet. Duis lectus turpis, luctus
+                eget tincidunt eu, congue et odio. Duis pharetra et nisl at
+                faucibus. Quisque luctus pulvinar arcu, et molestie lectus
+                ultrices et. Sed diam urna, egestas ut ipsum vel, volutpat
+                volutpat neque. Praesent fringilla tortor arcu. Vivamus faucibus
+                nisl enim, nec tristique ipsum euismod facilisis. Morbi ut
+                bibendum est, eu tincidunt odio. Orci varius natoque penatibus
+                et magnis dis parturient montes, nascetur ridiculus mus. Mauris
+                aliquet odio ac lorem aliquet ultricies in eget neque. Phasellus
+                nec tortor vel tellus pulvinar feugiat.
+              </p>
+            </ng-template>
+          </li> -->
+        </ul>
+
+        <div [ngbNavOutlet]="nav" class="mt-2"></div>
+        <button
+          (click)="exportChildProjectByLastNamePdf()"
+          class="btn btn-success float-sm-end"
+        >
+          Imprimé
+        </button>
+      </div>
+    </div>
+  </div>
+  <!-- ==================================-->
+
+  <!-- ==================================-->
+  <!-- ======= Vertical pills ===== -->
+  <!-- ==================================-->
+  <!-- <div class="col-12">
+    <div class="card">
+      <div class="p-3">
+        <h4 class="card-title mb-0">Vertical pills</h4>
+      </div>
+      <div class="card-body border-top">
+        <h6 class="card-subtitle mb-3">
+          You should use <code>class="nav-pills"</code> if you need pills and
+          the <code>[orientation]</code> input to change nav orientation
+        </h6>
+
+        <div class="d-flex">
+          <ul
+            ngbNav
+            #navVp="ngbNav"
+            [(activeId)]="activev"
+            class="nav-pills"
+            orientation="vertical"
+          >
+            <li ngbNavItem="top">
+              <a ngbNavLink>Top</a>
+              <ng-template ngbNavContent>
+                <p>
+                  Raw denim you probably haven't heard of them jean shorts
+                  Austin. Nesciunt tofu stumptown aliqua, retro synth master
+                  cleanse. Mustache cliche tempor, williamsburg carles vegan
+                  helvetica. Reprehenderit butcher retro keffiyeh dreamcatcher
+                  synth. Cosby sweater eu banh mi, qui irure terry richardson ex
+                  squid. Aliquip placeat salvia cillum iphone. Seitan aliquip
+                  quis cardigan american apparel, butcher voluptate nisi qui.
+                </p>
+              </ng-template>
+            </li>
+            <li ngbNavItem="2">
+              <a ngbNavLink>Middle</a>
+              <ng-template ngbNavContent>
+                <p>
+                  Exercitation +1 labore velit, blog sartorial PBR leggings next
+                  level wes anderson artisan four loko farm-to-table craft beer
+                  twee. Qui photo booth letterpress, commodo enim craft beer
+                  mlkshk aliquip jean shorts ullamco ad vinyl cillum PBR. Homo
+                  nostrud organic, assumenda labore aesthetic magna delectus
+                  mollit. Keytar helvetica VHS salvia yr, vero magna velit
+                  sapiente labore stumptown. Vegan fanny pack odio cillum wes
+                  anderson 8-bit, sustainable jean shorts beard ut DIY ethical
+                  culpa terry richardson biodiesel. Art party scenester
+                  stumptown, tumblr butcher vero sint qui sapiente accusamus
+                  tattooed echo park.
+                </p>
+              </ng-template>
+            </li>
+            <li ngbNavItem="3">
+              <a ngbNavLink>Bottom</a>
+              <ng-template ngbNavContent>
+                <p>
+                  Sed commodo, leo at suscipit dictum, quam est porttitor
+                  sapien, eget sodales nibh elit id diam. Nulla facilisi. Donec
+                  egestas ligula vitae odio interdum aliquet. Duis lectus
+                  turpis, luctus eget tincidunt eu, congue et odio. Duis
+                  pharetra et nisl at faucibus. Quisque luctus pulvinar arcu, et
+                  molestie lectus ultrices et. Sed diam urna, egestas ut ipsum
+                  vel, volutpat volutpat neque. Praesent fringilla tortor arcu.
+                  Vivamus faucibus nisl enim, nec tristique ipsum euismod
+                  facilisis. Morbi ut bibendum est, eu tincidunt odio. Orci
+                  varius natoque penatibus et magnis dis parturient montes,
+                  nascetur ridiculus mus. Mauris aliquet odio ac lorem aliquet
+                  ultricies in eget neque. Phasellus nec tortor vel tellus
+                  pulvinar feugiat.
+                </p>
+              </ng-template>
+            </li>
+          </ul>
+
+          <div [ngbNavOutlet]="navVp" class="ms-4"></div>
+        </div>
+      </div>
+    </div>
+  </div> -->
+</div>

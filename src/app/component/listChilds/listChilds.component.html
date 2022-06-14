@@ -1,0 +1,1012 @@
+<div class="row">
+  <!-- ---------------------------------------------- -->
+  <!-- 1. Badges -->
+  <!-- ---------------------------------------------- -->
+  <div class="col-12">
+    <div class="card">
+      <!-- <div
+        class="card-header bg-info"
+        style="display: flex; font-weight: 500; color: white"
+      >
+        <h4 style="display: flex">
+          Liste total des enfants par ordre de Numéro bénéficiaire
+        </h4>
+        <div class="row" style="display: flex; margin-left: 20rem">
+          <div class="col-md-12">
+            <div class="md-form">
+              <input
+                style="height: 2rem"
+                placeholder="Recherche ..."
+                type="text"
+                [(ngModel)]="searchText"
+                class="form-control"
+                id="search"
+                mdbInput
+              />
+
+            </div>
+          </div>
+        </div>
+      </div> -->
+      <div class="tableebody">
+        <div class="card-body">
+          <!-- ------------------------------------- -->
+
+          <div class="col-12">
+            <div class="card" style="width: 101%">
+              <div class="p-3 card-header bg-success" style="height: 2.9rem">
+                <h4 class="display: flex">
+                  Liste total des enfants par ordre de :
+                </h4>
+              </div>
+              <div class="card-body border-top">
+                <ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-tabs">
+                  <li [ngbNavItem]="1">
+                    <a ngbNavLink>N° Bénéficiaire</a>
+                    <ng-template ngbNavContent>
+                      <div class="card TableBody">
+                        <div class="card-header btn-outline-info">
+                          <div class="row">
+                            <div class="col-md-12">
+                              <div class="md-form">
+                                <input
+                                  style="height: 2rem"
+                                  placeholder="Recherche ..."
+                                  type="text"
+                                  [(ngModel)]="searchText"
+                                  class="form-control"
+                                  id="search"
+                                  mdbInput
+                                />
+                                <!-- <label for="search">Search</label> -->
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="tableebody">
+                          <div class="card-body">
+                            <!-- ------------ -->
+                            <div class="table-responsive">
+                              <table class="table align-middle">
+                                <thead>
+                                  <tr>
+                                    <!-- <th class="title" style="margin-right: -99px">#</th> -->
+                                    <th class="title">N° Bénéficiaire</th>
+                                    <th class="title">Nom</th>
+                                    <th class="title">Prenoms</th>
+                                    <th class="title">Date de naissance</th>
+                                    <th class="title">Genre</th>
+                                    <th class="title">Status</th>
+                                    <!-- <th class="title">Numéro du parrain</th> -->
+                                    <th class="title">Action</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr
+                                    *ngFor="
+                                      let child of childs | filter: searchText
+                                    "
+                                    class="colorr"
+                                  >
+                                    <!-- <h5 class="title">
+                    {{ i + 1 }}
+                  </h5> -->
+                                    <td style="text-transform: uppercase">
+                                      {{ child.numeroBeneficiaire }}
+                                    </td>
+                                    <td style="text-transform: uppercase">
+                                      {{ child.lastNameChild }}
+                                    </td>
+                                    <td style="text-transform: capitalize">
+                                      {{ child.firstNameChild }}
+                                    </td>
+                                    <td>
+                                      {{ child.jourNaiss }}/{{
+                                        child.moisNaiss
+                                      }}/{{ child.anneNaiss }}
+                                    </td>
+                                    <td>{{ child.gender }}</td>
+                                    <td>{{ child.status }}</td>
+                                    <!-- <td>{{ child.numeroParrain }}</td> -->
+                                    <td>
+                                      <span class="table-update">
+                                        <button
+                                          type="button"
+                                          class="btn btn-outline-info btn-rounded btn-sm my-0"
+                                          data-mdb-ripple-color="dark"
+                                          style="margin-right: 2px"
+                                          (click)="
+                                            updateChild(
+                                              child.numeroBeneficiaire
+                                            )
+                                          "
+                                        >
+                                          <i
+                                            ngbTooltip="Modifier"
+                                            class="bi bi-pencil-square"
+                                          ></i>
+                                        </button>
+                                      </span>
+                                      <!-- ------Enlever------ -->
+                                      <span class="table-update">
+                                        <button
+                                          type="button"
+                                          class="btn btn-outline-success btn-rounded btn-sm my-0"
+                                          data-mdb-ripple-color="dark"
+                                          style="margin-right: 2px"
+                                          (click)="
+                                            childProject(
+                                              child.numeroBeneficiaire
+                                            )
+                                          "
+                                        >
+                                          <i
+                                            ngbTooltip="Ajouter un projet"
+                                            class="bi bi-peace"
+                                          ></i>
+                                        </button>
+                                      </span>
+
+                                      <span class="table-remove"
+                                        ><button
+                                          type="button"
+                                          class="btn btn-outline-warning btn-rounded btn-sm my-0"
+                                          style="margin-right: 2px"
+                                          (click)="
+                                            infoChild(child.numeroBeneficiaire)
+                                          "
+                                        >
+                                          <i
+                                            ngbTooltip="Vusioner tous les info"
+                                            class="bi bi-eye-fill"
+                                          ></i></button
+                                      ></span>
+
+                                      <span class="table-remove"
+                                        ><button
+                                          type="button"
+                                          class="btn btn-danger btn-rounded btn-sm my-0"
+                                          style="margin-right: 2px"
+                                          mwlConfirmationPopover
+                                          [popoverTitle]="popoverTitle"
+                                          [popoverMessage]="popoverMessage"
+                                          [confirmText]="confirmText"
+                                          [cancelText]="cancelText"
+                                          placement="left"
+                                          (confirm)="
+                                            childLog(child.numeroBeneficiaire)
+                                          "
+                                          (cancel)="cancelClicked = true"
+                                          confirmButtonType="danger"
+                                          cancelButtonType="outline-secondary"
+                                          [appendToBody]="true"
+                                        >
+                                          <i
+                                            ngbTooltip="Supprimer"
+                                            class="bi bi-trash"
+                                          ></i></button
+                                      ></span>
+                                    </td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                            </div>
+                          </div>
+                        </div>
+                        <button
+                          (click)="exportChildByNumPdf()"
+                          class="btn btn-success float-sm-end"
+                        >
+                          Imprimé
+                        </button>
+                      </div>
+                    </ng-template>
+                  </li>
+                  <li [ngbNavItem]="2">
+                    <a ngbNavLink>Nom de famille</a>
+                    <ng-template ngbNavContent>
+                      <div class="card TableBody">
+                        <div class="card-header btn-outline-info">
+                          <div class="row">
+                            <div class="col-md-12">
+                              <div class="md-form">
+                                <input
+                                  style="height: 2rem"
+                                  placeholder="Recherche ..."
+                                  type="text"
+                                  [(ngModel)]="searchText"
+                                  class="form-control"
+                                  id="search"
+                                  mdbInput
+                                />
+                                <!-- <label for="search">Search</label> -->
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="tableebody">
+                          <div class="card-body">
+                            <!-- title -->
+                            <!-- <h4
+            class="card-title"
+            style="color: rgb(46, 45, 45); text-decoration: underline"
+          >
+            Liste des enfants qui fêtent leurs anniversaires
+          </h4> -->
+                            <!-- <h5 class="card-subtitle">Overview of the projects</h5> -->
+
+                            <!-- title -->
+                            <div class="table-responsive">
+                              <table class="table align-middle">
+                                <thead>
+                                  <tr>
+                                    <!-- <th class="title" style="margin-right: -99px">#</th> -->
+                                    <th class="title">N° Bénéficiaire</th>
+                                    <th class="title">Nom</th>
+                                    <th class="title">Prenoms</th>
+                                    <th class="title">Date de naissance</th>
+                                    <th class="title">Genre</th>
+                                    <th class="title">Status</th>
+                                    <!-- <th class="title">Numéro du parrain</th> -->
+                                    <th class="title">Action</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr
+                                    *ngFor="
+                                      let child of childByname
+                                        | filter: searchText
+                                    "
+                                    class="colorr"
+                                  >
+                                    <!-- <h5 class="title">
+                    {{ i + 1 }}
+                  </h5> -->
+                                    <td style="text-transform: uppercase">
+                                      {{ child.numeroBeneficiaire }}
+                                    </td>
+                                    <td style="text-transform: uppercase">
+                                      {{ child.lastNameChild }}
+                                    </td>
+                                    <td style="text-transform: capitalize">
+                                      {{ child.firstNameChild }}
+                                    </td>
+                                    <td>
+                                      {{ child.jourNaiss }}/{{
+                                        child.moisNaiss
+                                      }}/{{ child.anneNaiss }}
+                                    </td>
+                                    <td>{{ child.gender }}</td>
+                                    <td>{{ child.status }}</td>
+                                    <!-- <td>{{ child.numeroParrain }}</td> -->
+                                    <td>
+                                      <span class="table-update">
+                                        <button
+                                          ngbTooltip="Modifier"
+                                          type="button"
+                                          class="btn btn-outline-info btn-rounded btn-sm my-0"
+                                          data-mdb-ripple-color="dark"
+                                          style="margin-right: 2px"
+                                          (click)="
+                                            updateChild(
+                                              child.numeroBeneficiaire
+                                            )
+                                          "
+                                        >
+                                          <i class="bi bi-pencil-square"></i>
+                                        </button>
+                                      </span>
+                                      <!-- ------Enlever------ -->
+                                      <span class="table-update">
+                                        <button
+                                          type="button"
+                                          class="btn btn-outline-success btn-rounded btn-sm my-0"
+                                          data-mdb-ripple-color="dark"
+                                          style="margin-right: 2px"
+                                          (click)="
+                                            childProject(
+                                              child.numeroBeneficiaire
+                                            )
+                                          "
+                                        >
+                                          <i class="bi bi-peace"></i>
+                                        </button>
+                                      </span>
+
+                                      <span class="table-remove"
+                                        ><button
+                                          type="button"
+                                          class="btn btn-outline-warning btn-rounded btn-sm my-0"
+                                          style="margin-right: 2px"
+                                          (click)="
+                                            infoChild(child.numeroBeneficiaire)
+                                          "
+                                        >
+                                          <i class="bi bi-eye-fill"></i></button
+                                      ></span>
+
+                                      <span class="table-remove"
+                                        ><button
+                                          type="button"
+                                          class="btn btn-danger btn-rounded btn-sm my-0"
+                                          style="margin-right: 2px"
+                                          mwlConfirmationPopover
+                                          [popoverTitle]="popoverTitle"
+                                          [popoverMessage]="popoverMessage"
+                                          [confirmText]="confirmText"
+                                          [cancelText]="cancelText"
+                                          placement="left"
+                                          (confirm)="
+                                            childLog(child.numeroBeneficiaire)
+                                          "
+                                          (cancel)="cancelClicked = true"
+                                          confirmButtonType="danger"
+                                          cancelButtonType="outline-secondary"
+                                          [appendToBody]="true"
+                                        >
+                                          <i class="bi bi-trash"></i></button
+                                      ></span>
+                                    </td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                            </div>
+                          </div>
+                        </div>
+                        <button
+                          (click)="exportChildByLastNamePdf()"
+                          class="btn btn-success float-sm-end"
+                        >
+                          Imprimé
+                        </button>
+                      </div>
+                    </ng-template>
+                  </li>
+
+                  <li [ngbNavItem]="3">
+                    <a ngbNavLink>Genre M</a>
+                    <ng-template ngbNavContent>
+                      <div class="card TableBody">
+                        <div class="card-header btn-outline-info">
+                          <div class="row">
+                            <div class="col-md-12">
+                              <div class="md-form">
+                                <input
+                                  style="height: 2rem"
+                                  placeholder="Recherche ..."
+                                  type="text"
+                                  [(ngModel)]="searchText"
+                                  class="form-control"
+                                  id="search"
+                                  mdbInput
+                                />
+                                <!-- <label for="search">Search</label> -->
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="tableebody">
+                          <div class="card-body">
+                            <div class="table-responsive">
+                              <table class="table align-middle">
+                                <thead>
+                                  <tr>
+                                    <!-- <th class="title" style="margin-right: -99px">#</th> -->
+                                    <th class="title">N° Bénéficiaire</th>
+                                    <th class="title">Nom</th>
+                                    <th class="title">Prenoms</th>
+                                    <th class="title">Date de naissance</th>
+                                    <th class="title">Genre</th>
+                                    <th class="title">Status</th>
+                                    <!-- <th class="title">Numéro du parrain</th> -->
+                                    <th class="title">Action</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr
+                                    *ngFor="
+                                      let child of childGenderM
+                                        | filter: searchText
+                                    "
+                                    class="colorr"
+                                  >
+                                    <!-- <h5 class="title">
+                    {{ i + 1 }}
+                  </h5> -->
+                                    <td style="text-transform: uppercase">
+                                      {{ child.numeroBeneficiaire }}
+                                    </td>
+                                    <td style="text-transform: uppercase">
+                                      {{ child.lastNameChild }}
+                                    </td>
+                                    <td style="text-transform: capitalize">
+                                      {{ child.firstNameChild }}
+                                    </td>
+                                    <td>
+                                      {{ child.jourNaiss }}/{{
+                                        child.moisNaiss
+                                      }}/{{ child.anneNaiss }}
+                                    </td>
+                                    <td>{{ child.gender }}</td>
+                                    <td>{{ child.status }}</td>
+                                    <td>
+                                      <span class="table-update">
+                                        <button
+                                          type="button"
+                                          class="btn btn-outline-info btn-rounded btn-sm my-0"
+                                          data-mdb-ripple-color="dark"
+                                          style="margin-right: 2px"
+                                          (click)="
+                                            updateChild(
+                                              child.numeroBeneficiaire
+                                            )
+                                          "
+                                        >
+                                          <i class="bi bi-pencil-square"></i>
+                                        </button>
+                                      </span>
+                                      <!-- ------Enlever------ -->
+                                      <span class="table-update">
+                                        <button
+                                          type="button"
+                                          class="btn btn-outline-success btn-rounded btn-sm my-0"
+                                          data-mdb-ripple-color="dark"
+                                          style="margin-right: 2px"
+                                          (click)="
+                                            childProject(
+                                              child.numeroBeneficiaire
+                                            )
+                                          "
+                                        >
+                                          <i class="bi bi-peace"></i>
+                                        </button>
+                                      </span>
+
+                                      <span class="table-remove"
+                                        ><button
+                                          type="button"
+                                          class="btn btn-outline-warning btn-rounded btn-sm my-0"
+                                          style="margin-right: 2px"
+                                          (click)="
+                                            infoChild(child.numeroBeneficiaire)
+                                          "
+                                        >
+                                          <i class="bi bi-eye-fill"></i></button
+                                      ></span>
+
+                                      <span class="table-remove"
+                                        ><button
+                                          type="button"
+                                          class="btn btn-danger btn-rounded btn-sm my-0"
+                                          style="margin-right: 2px"
+                                          mwlConfirmationPopover
+                                          [popoverTitle]="popoverTitle"
+                                          [popoverMessage]="popoverMessage"
+                                          [confirmText]="confirmText"
+                                          [cancelText]="cancelText"
+                                          placement="left"
+                                          (confirm)="
+                                            childLog(child.numeroBeneficiaire)
+                                          "
+                                          (cancel)="cancelClicked = true"
+                                          confirmButtonType="danger"
+                                          cancelButtonType="outline-secondary"
+                                          [appendToBody]="true"
+                                        >
+                                          <i class="bi bi-trash"></i></button
+                                      ></span>
+                                    </td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                            </div>
+                          </div>
+                        </div>
+                        <button
+                          (click)="exportChildByGenderMPdf()"
+                          class="btn btn-success float-sm-end"
+                        >
+                          Imprimé
+                        </button>
+                      </div>
+                    </ng-template>
+                  </li>
+                  <li [ngbNavItem]="4">
+                    <a ngbNavLink>Genre F</a>
+                    <ng-template ngbNavContent>
+                      <div class="card TableBody">
+                        <div class="card-header btn-outline-info">
+                          <div class="row">
+                            <div class="col-md-12">
+                              <div class="md-form">
+                                <input
+                                  style="height: 2rem"
+                                  placeholder="Recherche ..."
+                                  type="text"
+                                  [(ngModel)]="searchText"
+                                  class="form-control"
+                                  id="search"
+                                  mdbInput
+                                />
+                                <!-- <label for="search">Search</label> -->
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="tableebody">
+                          <div class="card-body">
+                            <div class="table-responsive">
+                              <table class="table align-middle">
+                                <thead>
+                                  <tr>
+                                    <!-- <th class="title" style="margin-right: -99px">#</th> -->
+                                    <th class="title">N° Bénéficiaire</th>
+                                    <th class="title">Nom</th>
+                                    <th class="title">Prenoms</th>
+                                    <th class="title">Date de naissance</th>
+                                    <th class="title">Genre</th>
+                                    <th class="title">Status</th>
+                                    <!-- <th class="title">Numéro du parrain</th> -->
+                                    <th class="title">Action</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr
+                                    *ngFor="
+                                      let child of childGenderF
+                                        | filter: searchText
+                                    "
+                                    class="colorr"
+                                  >
+                                    <!-- <h5 class="title">
+                    {{ i + 1 }}
+                  </h5> -->
+                                    <td style="text-transform: uppercase">
+                                      {{ child.numeroBeneficiaire }}
+                                    </td>
+                                    <td style="text-transform: uppercase">
+                                      {{ child.lastNameChild }}
+                                    </td>
+                                    <td style="text-transform: capitalize">
+                                      {{ child.firstNameChild }}
+                                    </td>
+                                    <td>
+                                      {{ child.jourNaiss }}/{{
+                                        child.moisNaiss
+                                      }}/{{ child.anneNaiss }}
+                                    </td>
+                                    <td>{{ child.gender }}</td>
+                                    <td>{{ child.status }}</td>
+                                    <!-- <td>{{ child.numeroParrain }}</td> -->
+                                    <td>
+                                      <span class="table-update">
+                                        <button
+                                          type="button"
+                                          class="btn btn-outline-info btn-rounded btn-sm my-0"
+                                          data-mdb-ripple-color="dark"
+                                          style="margin-right: 2px"
+                                          (click)="
+                                            updateChild(
+                                              child.numeroBeneficiaire
+                                            )
+                                          "
+                                        >
+                                          <i class="bi bi-pencil-square"></i>
+                                        </button>
+                                      </span>
+                                      <!-- ------Enlever------ -->
+                                      <span class="table-update">
+                                        <button
+                                          type="button"
+                                          class="btn btn-outline-success btn-rounded btn-sm my-0"
+                                          data-mdb-ripple-color="dark"
+                                          style="margin-right: 2px"
+                                          (click)="
+                                            childProject(
+                                              child.numeroBeneficiaire
+                                            )
+                                          "
+                                        >
+                                          <i class="bi bi-peace"></i>
+                                        </button>
+                                      </span>
+
+                                      <span class="table-remove"
+                                        ><button
+                                          type="button"
+                                          class="btn btn-outline-warning btn-rounded btn-sm my-0"
+                                          style="margin-right: 2px"
+                                          (click)="
+                                            infoChild(child.numeroBeneficiaire)
+                                          "
+                                        >
+                                          <i class="bi bi-eye-fill"></i></button
+                                      ></span>
+
+                                      <span class="table-remove"
+                                        ><button
+                                          type="button"
+                                          class="btn btn-danger btn-rounded btn-sm my-0"
+                                          style="margin-right: 2px"
+                                          mwlConfirmationPopover
+                                          [popoverTitle]="popoverTitle"
+                                          [popoverMessage]="popoverMessage"
+                                          [confirmText]="confirmText"
+                                          [cancelText]="cancelText"
+                                          placement="left"
+                                          (confirm)="
+                                            childLog(child.numeroBeneficiaire)
+                                          "
+                                          (cancel)="cancelClicked = true"
+                                          confirmButtonType="danger"
+                                          cancelButtonType="outline-secondary"
+                                          [appendToBody]="true"
+                                        >
+                                          <i class="bi bi-trash"></i></button
+                                      ></span>
+                                    </td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                            </div>
+                          </div>
+                        </div>
+                        <button
+                          (click)="exportChildByGenderFPdf()"
+                          class="btn btn-success float-sm-end"
+                        >
+                          Imprimé
+                        </button>
+                      </div>
+                    </ng-template>
+                  </li>
+                  <li [ngbNavItem]="5">
+                    <a ngbNavLink>Sponsorisé</a>
+                    <ng-template ngbNavContent>
+                      <div class="card TableBody">
+                        <div class="card-header btn-outline-info">
+                          <div class="row">
+                            <div class="col-md-12">
+                              <div class="md-form">
+                                <input
+                                  style="height: 2rem"
+                                  placeholder="Recherche ..."
+                                  type="text"
+                                  [(ngModel)]="searchText"
+                                  class="form-control"
+                                  id="search"
+                                  mdbInput
+                                />
+                                <!-- <label for="search">Search</label> -->
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="tableebody">
+                          <div class="card-body">
+                            <div class="table-responsive">
+                              <table class="table align-middle">
+                                <thead>
+                                  <tr>
+                                    <!-- <th class="title" style="margin-right: -99px">#</th> -->
+                                    <th class="title">N° Bénéficiaire</th>
+                                    <th class="title">Nom</th>
+                                    <th class="title">Prenoms</th>
+                                    <th class="title">Date de naissance</th>
+                                    <th class="title">Genre</th>
+                                    <th class="title">Status</th>
+                                    <!-- <th class="title">Numéro du parrain</th> -->
+                                    <th class="title">Action</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr
+                                    *ngFor="
+                                      let child of childSponsor
+                                        | filter: searchText
+                                    "
+                                    class="colorr"
+                                  >
+                                    <!-- <h5 class="title">
+                    {{ i + 1 }}
+                  </h5> -->
+                                    <td style="text-transform: uppercase">
+                                      {{ child.numeroBeneficiaire }}
+                                    </td>
+                                    <td style="text-transform: uppercase">
+                                      {{ child.lastNameChild }}
+                                    </td>
+                                    <td style="text-transform: capitalize">
+                                      {{ child.firstNameChild }}
+                                    </td>
+                                    <td>
+                                      {{ child.jourNaiss }}/{{
+                                        child.moisNaiss
+                                      }}/{{ child.anneNaiss }}
+                                    </td>
+                                    <td>{{ child.gender }}</td>
+                                    <td>{{ child.status }}</td>
+                                    <!-- <td>{{ child.numeroParrain }}</td> -->
+                                    <td>
+                                      <span class="table-update">
+                                        <button
+                                          type="button"
+                                          class="btn btn-outline-info btn-rounded btn-sm my-0"
+                                          data-mdb-ripple-color="dark"
+                                          style="margin-right: 2px"
+                                          (click)="
+                                            updateChild(
+                                              child.numeroBeneficiaire
+                                            )
+                                          "
+                                        >
+                                          <i class="bi bi-pencil-square"></i>
+                                        </button>
+                                      </span>
+                                      <!-- ------Enlever------ -->
+                                      <span class="table-update">
+                                        <button
+                                          type="button"
+                                          class="btn btn-outline-success btn-rounded btn-sm my-0"
+                                          data-mdb-ripple-color="dark"
+                                          style="margin-right: 2px"
+                                          (click)="
+                                            childProject(
+                                              child.numeroBeneficiaire
+                                            )
+                                          "
+                                        >
+                                          <i class="bi bi-peace"></i>
+                                        </button>
+                                      </span>
+
+                                      <span class="table-remove"
+                                        ><button
+                                          type="button"
+                                          class="btn btn-outline-warning btn-rounded btn-sm my-0"
+                                          style="margin-right: 2px"
+                                          (click)="
+                                            infoChild(child.numeroBeneficiaire)
+                                          "
+                                        >
+                                          <i class="bi bi-eye-fill"></i></button
+                                      ></span>
+
+                                      <span class="table-remove"
+                                        ><button
+                                          type="button"
+                                          class="btn btn-danger btn-rounded btn-sm my-0"
+                                          style="margin-right: 2px"
+                                          mwlConfirmationPopover
+                                          [popoverTitle]="popoverTitle"
+                                          [popoverMessage]="popoverMessage"
+                                          [confirmText]="confirmText"
+                                          [cancelText]="cancelText"
+                                          placement="left"
+                                          (confirm)="
+                                            childLog(child.numeroBeneficiaire)
+                                          "
+                                          (cancel)="cancelClicked = true"
+                                          confirmButtonType="danger"
+                                          cancelButtonType="outline-secondary"
+                                          [appendToBody]="true"
+                                        >
+                                          <i class="bi bi-trash"></i></button
+                                      ></span>
+                                    </td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                            </div>
+                          </div>
+                        </div>
+                        <button
+                          (click)="exportChildBySponsorPdf()"
+                          class="btn btn-success float-sm-end"
+                        >
+                          Imprimé
+                        </button>
+                      </div>
+                    </ng-template>
+                  </li>
+                  <li [ngbNavItem]="6">
+                    <a ngbNavLink>Non Sponsorisé</a>
+                    <ng-template ngbNavContent>
+                      <div class="card TableBody">
+                        <div class="card-header btn-outline-info">
+                          <div class="row">
+                            <div class="col-md-12">
+                              <div class="md-form">
+                                <input
+                                  style="height: 2rem"
+                                  placeholder="Recherche ..."
+                                  type="text"
+                                  [(ngModel)]="searchText"
+                                  class="form-control"
+                                  id="search"
+                                  mdbInput
+                                />
+                                <!-- <label for="search">Search</label> -->
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="tableebody">
+                          <div class="card-body">
+                            <div class="table-responsive">
+                              <table class="table align-middle">
+                                <thead>
+                                  <tr>
+                                    <!-- <th class="title" style="margin-right: -99px">#</th> -->
+                                    <th class="title">N° Bénéficiaire</th>
+                                    <th class="title">Nom</th>
+                                    <th class="title">Prenoms</th>
+                                    <th class="title">Date de naissance</th>
+                                    <th class="title">Genre</th>
+                                    <th class="title">Status</th>
+                                    <!-- <th class="title">Numéro du parrain</th> -->
+                                    <th class="title">Action</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr
+                                    *ngFor="
+                                      let child of childNoSponsor
+                                        | filter: searchText
+                                    "
+                                    class="colorr"
+                                  >
+                                    <td style="text-transform: uppercase">
+                                      {{ child.numeroBeneficiaire }}
+                                    </td>
+                                    <td style="text-transform: uppercase">
+                                      {{ child.lastNameChild }}
+                                    </td>
+                                    <td style="text-transform: capitalize">
+                                      {{ child.firstNameChild }}
+                                    </td>
+                                    <td>
+                                      {{ child.jourNaiss }}/{{
+                                        child.moisNaiss
+                                      }}/{{ child.anneNaiss }}
+                                    </td>
+                                    <td>{{ child.gender }}</td>
+                                    <td>{{ child.status }}</td>
+                                    <!-- <td>{{ child.numeroParrain }}</td> -->
+                                    <td>
+                                      <span class="table-update">
+                                        <button
+                                          type="button"
+                                          class="btn btn-outline-info btn-rounded btn-sm my-0"
+                                          data-mdb-ripple-color="dark"
+                                          style="margin-right: 2px"
+                                          (click)="
+                                            updateChild(
+                                              child.numeroBeneficiaire
+                                            )
+                                          "
+                                        >
+                                          <i class="bi bi-pencil-square"></i>
+                                        </button>
+                                      </span>
+                                      <!-- ------Enlever------ -->
+                                      <span class="table-update">
+                                        <button
+                                          type="button"
+                                          class="btn btn-outline-success btn-rounded btn-sm my-0"
+                                          data-mdb-ripple-color="dark"
+                                          style="margin-right: 2px"
+                                          (click)="
+                                            childProject(
+                                              child.numeroBeneficiaire
+                                            )
+                                          "
+                                        >
+                                          <i class="bi bi-peace"></i>
+                                        </button>
+                                      </span>
+
+                                      <span class="table-remove"
+                                        ><button
+                                          type="button"
+                                          class="btn btn-outline-warning btn-rounded btn-sm my-0"
+                                          style="margin-right: 2px"
+                                          (click)="
+                                            infoChild(child.numeroBeneficiaire)
+                                          "
+                                        >
+                                          <i class="bi bi-eye-fill"></i></button
+                                      ></span>
+
+                                      <span class="table-remove"
+                                        ><button
+                                          type="button"
+                                          class="btn btn-danger btn-rounded btn-sm my-0"
+                                          style="margin-right: 2px"
+                                          mwlConfirmationPopover
+                                          [popoverTitle]="popoverTitle"
+                                          [popoverMessage]="popoverMessage"
+                                          [confirmText]="confirmText"
+                                          [cancelText]="cancelText"
+                                          placement="left"
+                                          (confirm)="
+                                            childLog(child.numeroBeneficiaire)
+                                          "
+                                          (cancel)="cancelClicked = true"
+                                          confirmButtonType="danger"
+                                          cancelButtonType="outline-secondary"
+                                          [appendToBody]="true"
+                                        >
+                                          <i class="bi bi-trash"></i></button
+                                      ></span>
+                                      <!-- ><button
+                                          type="button"
+                                          class="btn btn-danger btn-rounded btn-sm my-0"
+                                          style="margin-right: 2px"
+                                          mwlConfirmationPopover
+                                          [popoverTitle]="popoverTitle"
+                                          [popoverMessage]="popoverMessage"
+                                          [confirmText]="confirmText"
+                                          [cancelText]="cancelText"
+                                          placement="left"
+                                          (confirm)="
+                                            removeChild(
+                                              child.numeroBeneficiaire
+                                            )
+                                          "
+                                          (cancel)="cancelClicked = true"
+                                          confirmButtonType="danger"
+                                          cancelButtonType="outline-secondary"
+                                          [appendToBody]="true"
+                                        >
+                                          <i class="bi bi-trash"></i></button
+                                      ></span> -->
+                                    </td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                            </div>
+                          </div>
+                        </div>
+                        <button
+                          (click)="exportChildByNoSponsorPdf()"
+                          class="btn btn-success float-sm-end"
+                        >
+                          Imprimé
+                        </button>
+                      </div>
+                    </ng-template>
+                  </li>
+                  <!-- <li [ngbNavItem]="7">
+                    <a ngbNavLink>Three</a>
+                    <ng-template ngbNavContent>
+                      <p>
+                        Sed commodo, leo at suscipit dictum, quam est porttitor
+                        sapien, eget sodales nibh elit id diam. Nulla facilisi.
+                        Donec egestas ligula vitae odio interdum aliquet. Duis
+                        lectus turpis, luctus eget tincidunt eu, congue et odio.
+                        Duis pharetra et nisl at faucibus. Quisque luctus
+                        pulvinar arcu, et molestie lectus ultrices et. Sed diam
+                        urna, egestas ut ipsum vel, volutpat volutpat neque.
+                        Praesent fringilla tortor arcu. Vivamus faucibus nisl
+                        enim, nec tristique ipsum euismod facilisis. Morbi ut
+                        bibendum est, eu tincidunt odio. Orci varius natoque
+                        penatibus et magnis dis parturient montes, nascetur
+                        ridiculus mus. Mauris aliquet odio ac lorem aliquet
+                        ultricies in eget neque. Phasellus nec tortor vel tellus
+                        pulvinar feugiat.
+                      </p>
+                    </ng-template>
+                  </li> -->
+                </ul>
+
+                <div [ngbNavOutlet]="nav" class="mt-2"></div>
+                <!-- <button class="btn btn-success float-sm-end">Imprimé</button> -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

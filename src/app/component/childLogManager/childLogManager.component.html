@@ -1,0 +1,773 @@
+<!-- <form
+  class="form"
+  #addchildLogform="ngForm"
+  (ngSubmit)="addChildLog(addchildLogform)"
+>
+  <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1 card1">
+    <div class="row">
+      <div class="card2">
+        <div class="mb-3 flex gauche">
+          <label
+            for="numeroBeneficiaireLog"
+            class="form-label"
+            style="color: black"
+            >N° Bénéficiare</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            id="numeroBeneficiaireLog"
+            name="numeroBeneficiaireLog"
+            required
+            [(ngModel)]="child.numeroBeneficiaire"
+            disabled
+            style="text-transform: uppercase"
+            aria-describedby="emailHelp"
+          />
+          <div id="emailHelp" class="form-text">Champ obligatoire</div>
+        </div>
+
+        <div class="mb-3 flex milieu">
+          <label for="lastNameChildLog" class="form-label" style="color: black"
+            >Nom de famille</label
+          >
+          <input
+            type="name"
+            class="form-control"
+            id="lastNameChildLog"
+            name="lastNameChildLog"
+            required
+            [(ngModel)]="child.lastNameChild"
+            aria-describedby="emailHelp"
+            style="text-transform: uppercase"
+            disabled
+          />
+          <div id="emailHelp" class="form-text">Champ obligatoire</div>
+        </div>
+
+        <div class="mb-3 flex droit">
+          <label for="firstNameChildLog" class="form-label" style="color: black"
+            >Prénoms</label
+          >
+          <input
+            type="name"
+            class="form-control"
+            id="firstNameChildLog"
+            name="firstNameChildLog"
+            required
+            [(ngModel)]="child.firstNameChild"
+            aria-describedby="emailHelp"
+            style="text-transform: capitalize"
+            disabled
+          />
+          <div id="emailHelp" class="form-text">Champ obligatoire</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1 card1Naiss">
+    <div class="row">
+      <div class="card2Naiss">
+        <div class="mb-3 flex gauche2">
+          <label for="jourNaissLog" class="form-label" style="color: black"
+            >Jour de naissance</label
+          >
+          <input
+            type="name"
+            class="form-control"
+            id="jourNaissLog"
+            name="jourNaissLog"
+            required
+            [(ngModel)]="child.jourNaiss"
+            aria-describedby="emailHelp"
+            disabled
+          />
+          <div id="emailHelp" class="form-text">Champ obligatoire</div>
+        </div>
+
+        <div class="mb-3 flex milieu2">
+          <label for="moisNaissLog" class="form-label" style="color: black"
+            >Mois de naissance</label
+          >
+          <input
+            type="name"
+            class="form-control"
+            id="moisNaissLog"
+            name="moisNaissLog"
+            required
+            [(ngModel)]="child.moisNaiss"
+            aria-describedby="emailHelp"
+            disabled
+            style="width: 9rem"
+          />
+          <div id="emailHelp" class="form-text">Champ obligatoire</div>
+        </div>
+
+        <div class="mb-3 flex droit2">
+          <label for="anneNaissLog" class="form-label" style="color: black"
+            >Année de naissance</label
+          >
+          <input
+            type="name"
+            class="form-control"
+            id="anneNaissLog"
+            name="anneNaissLog"
+            required
+            [(ngModel)]="child.anneNaiss"
+            aria-describedby="emailHelp"
+            disabled
+            style="width: 9rem"
+          />
+          <div id="emailHelp" class="form-text">Champ obligatoire</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="radioDate">
+    <div class="checkRadio" style="margin-right: 5rem">
+      <label class="form-label" style="color: black">Status</label>
+      <div class="form-check">
+        <input
+          class="form-check-input"
+          type="radio"
+          name="statusLog"
+          required
+          [(ngModel)]="child.status"
+          id="statusLog"
+          value="Sponsorisé"
+          disabled
+        />
+
+        <label class="form-check-label" for="exampleRadios1">
+          Sponsorisé
+        </label>
+      </div>
+      <div class="form-check">
+        <input
+          class="form-check-input"
+          type="radio"
+          name="statusLog"
+          required
+          [(ngModel)]="child.status"
+          id="statusLog"
+          value="Non Sponsorisé"
+          disabled
+        />
+        <label class="form-check-label" for="exampleRadios2">
+          Non Sponsorisé
+        </label>
+      </div>
+    </div>
+
+    <div class="checkRadio" style="margin-right: 6rem">
+      <label class="form-label" style="color: black">Genre</label>
+      <div class="gender">
+        <div class="form-check form-check-inline">
+          <input
+            class="form-check-input"
+            type="radio"
+            name="genderLog"
+            required
+            [(ngModel)]="child.gender"
+            id="genderLog"
+            value="M"
+            disabled
+          />
+          <label class="form-check-label" for="inlineRadio1">Masculin</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input
+            class="form-check-input"
+            type="radio"
+            name="genderLog"
+            required
+            [(ngModel)]="child.gender"
+            id="genderLog"
+            value="F"
+            disabled
+          />
+          <label class="form-check-label" for="inlineRadio2">Féminin</label>
+        </div>
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <div class="form-group flex" style="margin-left: -0.5rem">
+        <label for="dateEntryLog">Année d'entrer</label>
+        <input
+          type="name"
+          class="form-control"
+          id="dateEntryLog"
+          name="dateEntryLog"
+          required
+          [(ngModel)]="child.dateEntry"
+          aria-describedby="emailHelp"
+          disabled
+          style="width: 9rem"
+        />
+        <div id="emailHelp" class="form-text">Champ obligatoire</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="infochild">
+    <div class="mb-3">
+      <div class="form-group flex" style="margin-left: -0.5rem">
+        <label for="observationLog">Observation</label>
+        <input
+          type="name"
+          class="form-control"
+          id="observationLog"
+          aria-describedby="emailHelp"
+          style="width: 9rem"
+        />
+        <div id="emailHelp" class="form-text">Champ obligatoire</div>
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <div class="form-group flex" style="margin-left: -0.5rem">
+        <label for="startClass">Classe de début</label>
+        <input
+          type="name"
+          class="form-control"
+          id="startClass"
+          name="startClass"
+          required
+          [(ngModel)]="child.startClass"
+          aria-describedby="emailHelp"
+          disabled
+          style="width: 9rem; margin-right: 10.5rem"
+        />
+        <div id="emailHelp" class="form-text">Champ obligatoire</div>
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <div class="form-group flex" style="margin-left: -0.5rem">
+        <label for="dateOutLog">Année de sortie</label>
+        <input
+          type="name"
+          class="form-control"
+          id="dateOutLog"
+          name="dateOutLog"
+          required
+          [(ngModel)]="child.dateOut"
+          aria-describedby="emailHelp"
+          style="width: 9rem"
+        />
+        <div id="emailHelp" class="form-text">Champ obligatoire</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="infochild">
+    <div class="mb-3">
+      <div class="form-group flex" style="margin-left: -0.5rem">
+        <label for="firstproject">Premier Projet</label>
+        <input
+          type="name"
+          class="form-control"
+          id="firstproject"
+          name="firstproject"
+          required
+          [(ngModel)]="child.project1"
+          aria-describedby="emailHelp"
+          disabled
+          style="width: 20rem"
+        />
+        <div id="emailHelp" class="form-text">Champ obligatoire</div>
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <div class="form-group flex" style="margin-left: 7.5rem">
+        <label for="lastproject">Projet Final</label>
+        <input
+          type="name"
+          class="form-control"
+          id="lastproject"
+          name="lastproject"
+          required
+          [(ngModel)]="child.project12"
+          aria-describedby="emailHelp"
+          disabled
+          style="width: 20rem"
+        />
+        <div id="emailHelp" class="form-text">Champ obligatoire</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="parrainInfo">
+    <div class="mb-3" style="margin-right: 7rem">
+      <label for="parrainNameLog" class="form-label" style="color: black"
+        >Nom & prénoms du tuteur
+      </label>
+      <input
+        type="name"
+        class="form-control"
+        id="parrainNameLog"
+        name="parrainNameLog"
+        required
+        [(ngModel)]="child.parrainName"
+        disabled
+        aria-describedby="emailHelp"
+      />
+      <div id="emailHelp" class="form-text">Champ obligatoire</div>
+    </div>
+
+    <div class="mb-3">
+      <div class="form-group flex" style="margin-left: -0.5rem">
+        <label for="endClass">Classe Final</label>
+        <input
+          type="name"
+          class="form-control"
+          id="endClass"
+          required
+          [(ngModel)]="child.endClass"
+          onkeyup="isEmpty()"
+          aria-describedby="emailHelp"
+          style="width: 9rem; margin-right: 4.5rem"
+        />
+        <div id="emailHelp" class="form-text">Champ obligatoire</div>
+      </div>
+    </div>
+
+    <div class="mb-3" style="color: black">
+      <label for="numeroParrainLog" class="form-label" style="color: black"
+        >Téléphone du tuteur</label
+      >
+      <input
+        type="name"
+        class="form-control"
+        id="numeroParrainLog"
+        name="numeroParrainLog"
+        required
+        [(ngModel)]="child.numeroParrain"
+        aria-describedby="emailHelp"
+        disabled
+      />
+      <div id="emailHelp" class="form-text">Champ obligatoire</div>
+    </div>
+  </div>
+
+  <div style="margin-left: 28rem; margin-top: -1rem">
+    <button type="submit" id="btnChildSave" class="btn btn-primary">
+      Enrégistrer
+    </button>
+  </div>
+</form> -->
+
+<div class="p-3 card-header bg-success" style="height: 2.9rem">
+  <h4 class="display: flex">
+    Sortie de l'enfant :
+    <span class="text-white">{{ child.numeroBeneficiaire }}</span>
+  </h4>
+  <span class="mt-5">
+    <strong>NB :</strong> Veillez renseignez tous les
+    <strong> champs obligatoire</strong></span
+  >
+</div>
+
+<form
+  class="form"
+  #addchildLogform="ngForm"
+  (ngSubmit)="addChildLog(addchildLogform)"
+>
+  <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1 card1">
+    <div class="row">
+      <div class="card2">
+        <!-- numeroBeneficiaire -->
+        <div class="mb-3 flex gauche">
+          <label
+            for="numeroBeneficiaireLog"
+            class="form-label"
+            style="color: black"
+            >N° Bénéficiare</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="numeroBeneficiaireLog"
+            id="numeroBeneficiaireLog"
+            required
+            [(ngModel)]="child.numeroBeneficiaire"
+            disabled
+            aria-describedby="emailHelp"
+            style="text-transform: uppercase"
+          />
+          <div id="emailHelp" class="form-text">Champ obligatoire</div>
+        </div>
+        <!-- lastNameChild -->
+        <div class="mb-3 flex milieu">
+          <label for="lastNameChildLog" class="form-label" style="color: black"
+            >Nom de famille</label
+          >
+          <input
+            type="name"
+            class="form-control"
+            name="lastNameChildLog"
+            id="lastNameChildLog"
+            required
+            [(ngModel)]="child.lastNameChild"
+            disabled
+            style="text-transform: uppercase"
+            aria-describedby="emailHelp"
+          />
+          <div id="emailHelp" class="form-text">Champ obligatoire</div>
+        </div>
+        <!-- firstNameChild -->
+        <div class="mb-3 flex droit">
+          <label for="firstNameChildLog" class="form-label" style="color: black"
+            >Prénoms</label
+          >
+          <input
+            type="name"
+            class="form-control"
+            id="firstNameChildLog"
+            name="firstNameChildLog"
+            required
+            [(ngModel)]="child.firstNameChild"
+            disabled
+            style="text-transform: capitalize"
+            aria-describedby="emailHelp"
+          />
+          <div id="emailHelp" class="form-text">Champ obligatoire</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1 card1Naiss">
+    <div class="row">
+      <div class="card2Naiss">
+        <div class="mb-3 flex gauche2" style="margin-right: 9rem">
+          <label for="jourNaissLog" class="form-label" style="color: black"
+            >Jour de naissance</label
+          >
+          <input
+            type="name"
+            class="form-control"
+            name="jourNaissLog"
+            id="jourNaissLog"
+            required
+            [(ngModel)]="child.jourNaiss"
+            disabled
+            aria-describedby="emailHelp"
+            style="width: 7rem"
+          />
+          <div id="emailHelp" class="form-text">Champ obligatoire</div>
+        </div>
+
+        <div class="mb-3 flex milieu2">
+          <label for="moisNaissLog" class="form-label" style="color: black"
+            >Mois de naissance</label
+          >
+          <input
+            type="name"
+            class="form-control"
+            name="moisNaissLog"
+            id="moisNaissLog"
+            required
+            [(ngModel)]="child.moisNaiss"
+            disabled
+            aria-describedby="emailHelp"
+            style="width: 7rem"
+          />
+          <div id="emailHelp" class="form-text">Champ obligatoire</div>
+        </div>
+
+        <div class="mb-3 flex droit2">
+          <label for="anneNaissLog" class="form-label" style="color: black"
+            >Année de naissance</label
+          >
+          <input
+            type="name"
+            class="form-control"
+            name="anneNaissLog"
+            id="anneNaissLog"
+            required
+            [(ngModel)]="child.anneNaiss"
+            disabled
+            aria-describedby="emailHelp"
+            style="width: 7rem"
+          />
+          <div id="emailHelp" class="form-text">Champ obligatoire</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="radioDate">
+    <div class="checkRadio" style="margin-right: 5rem">
+      <label class="form-label" style="color: black">Status</label>
+      <div class="form-check">
+        <input
+          class="form-check-input"
+          type="radio"
+          name="statusLog"
+          id="statusLog"
+          required
+          [(ngModel)]="child.status"
+          disabled
+          value="Sponsorisé"
+        />
+        <!-- checked -->
+        <label class="form-check-label" for="exampleRadios1">
+          Sponsorisé
+        </label>
+      </div>
+      <div class="form-check">
+        <input
+          class="form-check-input"
+          type="radio"
+          name="statusLog"
+          required
+          [(ngModel)]="child.status"
+          disabled
+          id="statusLog"
+          value="Non Sponsorisé"
+        />
+        <label class="form-check-label" for="exampleRadios2">
+          Non Sponsorisé
+        </label>
+      </div>
+    </div>
+
+    <div class="checkRadio" style="margin-right: 6rem">
+      <label class="form-label" style="color: black">Genre</label>
+      <div class="genderLog">
+        <div class="form-check form-check-inline">
+          <input
+            class="form-check-input"
+            type="radio"
+            id="genderLog"
+            name="genderLog"
+            required
+            [(ngModel)]="child.gender"
+            disabled
+            value="M"
+          />
+          <label class="form-check-label" for="inlineRadio1">Masculin</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input
+            class="form-check-input"
+            type="radio"
+            name="genderLog"
+            required
+            [(ngModel)]="child.gender"
+            disabled
+            id="genderLog"
+            value="F"
+          />
+          <label class="form-check-label" for="inlineRadio2">Féminin</label>
+        </div>
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <div class="mb-3 flex droit2">
+        <label for="dateEntryLog" class="form-label" style="color: black"
+          >Année d'entrer</label
+        >
+        <input
+          type="name"
+          class="form-control"
+          name="dateEntryLog"
+          id="dateEntryLog"
+          required
+          [(ngModel)]="child.dateEntry"
+          disabled
+          aria-describedby="emailHelp"
+          style="width: 8rem"
+        />
+        <div id="emailHelp" class="form-text">Champ obligatoire</div>
+      </div>
+    </div>
+  </div>
+  <!-- ------------------------------------------------------ -->
+  <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1 card1Naiss2">
+    <div class="row">
+      <div class="card2Naiss">
+        <div class="mb-3 flex gauche2" style="margin-right: 9rem">
+          <label for="dateOutLog" class="form-label" style="color: black"
+            >Année de sortie</label
+          >
+          <input
+            type="name"
+            class="form-control"
+            name="dateOutLog"
+            id="dateOutLog"
+            required
+            [(ngModel)]="child.dateOut"
+            disabled
+            aria-describedby="emailHelp"
+            style="width: 9rem"
+          />
+          <div id="emailHelp" class="form-text">Champ obligatoire</div>
+        </div>
+
+        <div class="mb-3 flex milieu2" style="margin-right: 5rem">
+          <label for="startClass" class="form-label" style="color: black"
+            >Classe d'entrée</label
+          >
+          <input
+            type="name"
+            class="form-control"
+            name="startClass"
+            id="startClass"
+            required
+            [(ngModel)]="child.startClass"
+            disabled
+            aria-describedby="emailHelp"
+            style="width: 9rem"
+          />
+          <div id="emailHelp" class="form-text">Champ obligatoire</div>
+        </div>
+
+        <div class="mb-3 flex droit2">
+          <label for="endClass" class="form-label" style="color: black"
+            >Classe de sortie</label
+          >
+          <input
+            type="name"
+            class="form-control"
+            name="endClass"
+            id="endClass"
+            required
+            [(ngModel)]="child.endClass"
+            disabled
+            aria-describedby="emailHelp"
+            style="width: 9rem"
+          />
+          <div id="emailHelp" class="form-text">Champ obligatoire</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- --------------------------------------------------- -->
+  <!-- ------------------------------------------------------ -->
+
+  <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1 card1Naiss2">
+    <div class="row">
+      <div class="card2Naiss">
+        <div class="mb-3 flex gauche2" style="margin-right: 15rem">
+          <label for="firstproject" class="form-label" style="color: black"
+            >Premier projet</label
+          >
+          <input
+            type="name"
+            class="form-control"
+            name="firstproject"
+            id="firstproject"
+            required
+            [(ngModel)]="child.project1"
+            aria-describedby="emailHelp"
+            disabled
+            style="width: 17rem"
+          />
+          <div id="emailHelp" class="form-text">Champ obligatoire</div>
+        </div>
+
+        <div class="mb-3 flex milieu2">
+          <label for="lastproject" class="form-label" style="color: black"
+            >Projet final</label
+          >
+          <input
+            type="name"
+            class="form-control"
+            name="lastproject"
+            id="lastproject"
+            required
+            [(ngModel)]="child.project12"
+            disabled
+            aria-describedby="emailHelp"
+            style="width: 17rem"
+          />
+          <div id="emailHelp" class="form-text">Champ obligatoire</div>
+        </div>
+
+        <!-- <div class="mb-3 flex droit2">
+          <label for="endClass" class="form-label" style="color: black"
+            >Classe de sortie</label
+          >
+          <input
+            type="name"
+            class="form-control"
+            name="endClass"
+            id="endClass"
+            required
+            [(ngModel)]="child.endClass"
+            aria-describedby="emailHelp"
+            style="width: 6rem"
+          />
+          <div id="emailHelp" class="form-text">Champ obligatoire</div>
+        </div> -->
+      </div>
+    </div>
+  </div>
+
+  <!-- --------------------------------------------------- -->
+
+  <div class="parrainInfo">
+    <div class="mb-3" style="margin-right: 4rem">
+      <label for="parrainNameLog" class="form-label" style="color: black"
+        >Nom & prénoms du tuteur
+      </label>
+      <input
+        type="name"
+        class="form-control"
+        id="parrainNameLog"
+        name="parrainNameLog"
+        required
+        [(ngModel)]="child.parrainName"
+        disabled
+        aria-describedby="emailHelp"
+      />
+      <div id="emailHelp" class="form-text">Champ obligatoire</div>
+    </div>
+    <div class="mb-3" style="color: black; margin-right: 4rem">
+      <label for="numeroParrainLog" class="form-label" style="color: black"
+        >Téléphone du tuteur</label
+      >
+      <input
+        type="name"
+        class="form-control"
+        id="numeroParrainLog"
+        name="numeroParrainLog"
+        required
+        [(ngModel)]="child.numeroParrain"
+        disabled
+        aria-describedby="emailHelp"
+      />
+      <div id="emailHelp" class="form-text">Champ obligatoire</div>
+    </div>
+    <div class="mb-3 flex milieu2">
+      <label for="observationLog" class="form-label" style="color: black"
+        >Observation sur l'enfant</label
+      >
+      <input
+        type="name"
+        class="form-control"
+        name="observationLog"
+        id="observationLog"
+        disabled
+        required
+        [(ngModel)]="child.observation"
+        aria-describedby="emailHelp"
+        style="width: 15rem"
+      />
+      <div id="emailHelp" class="form-text">Champ obligatoire</div>
+    </div>
+  </div>
+
+  <div style="margin-left: 28rem; margin-top: 1rem">
+    <button type="submit" id="btnChildSave" class="btn btn-success">
+      Valider
+    </button>
+  </div>
+</form>

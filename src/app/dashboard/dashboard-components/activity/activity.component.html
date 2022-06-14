@@ -1,0 +1,47 @@
+<div class="card">
+  <div class="card-body">
+    <h4 class="card-title">Liste total des activités</h4>
+    <div
+      class="card-subtitle text-muted"
+      routerLinkActive="active"
+      [routerLinkActiveOptions]="{ exact: true }"
+    >
+      <a class="btn btn-outline-success" (click)="getActivity()"> Tous </a>
+      <a class="btn btn-outline-warning" (click)="getActivityOfMonth()">
+        Mois
+      </a>
+    </div>
+    <div class="feed-widget mt-4 scroll-bg">
+      <div class="scroll-div">
+        <div class="scroll-object">
+          <ul class="list-unstyled feed-body m-0">
+            <li
+              class="feed-item d-flex align-items-center mb-3"
+              *ngFor="let activity of activitys"
+            >
+              <div
+                class="trueIcon feed-icon round round-sm text-white d-flex align-items-center justify-content-center rounded-circle"
+                *ngIf="activity.finish == true"
+              >
+                <i
+                  class="bi bi-check-circle"
+                  ngbTooltip="Activité déjà réalisé"
+                ></i>
+              </div>
+              <div
+                class="falseIcon feed-icon round round-sm text-white d-flex align-items-center justify-content-center rounded-circle"
+                *ngIf="activity.finish != true"
+              >
+                <i class="bi bi-circle"></i>
+              </div>
+              <h5 class="mb-0 fw-normal ms-3">{{ activity.nameActivity }}</h5>
+              <span class="text-muted ms-auto fs-2">
+                date : {{ activity.dayActivity }} / {{ activity.monthActivity }}
+              </span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

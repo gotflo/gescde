@@ -1,0 +1,108 @@
+.card2 {
+  margin-top: -7%;
+  display: contents;
+  margin-left: 4rem;
+  margin-right: 2rem;
+  align-items: center;
+  align-content: center;
+
+  height: 18rem;
+  margin-bottom: -7rem;
+}
+.card2Naiss {
+  margin-top: -7%;
+  display: flex;
+  margin-left: 4rem;
+  margin-right: 2rem;
+  align-items: center;
+  align-content: center;
+
+  height: 15rem;
+  margin-bottom: -4rem;
+}
+
+.flex {
+  flex-grow: 1;
+}
+
+.gauche {
+  float: left;
+  width: 15%;
+  margin-right: 4rem;
+}
+
+.milieu {
+  display: inline-block;
+  margin-right: 4rem;
+}
+.droite {
+  float: right;
+  margin-right: 4rem;
+}
+.gaucheDay {
+  float: left;
+  width: 15%;
+  margin-right: 4rem;
+  margin-left: -5rem;
+}
+.milieuMonth {
+  display: inline-block;
+  margin-right: 6.5rem;
+}
+.droiteYear {
+  float: right;
+  margin-right: 4rem;
+}
+
+.card1 {
+  width: 53rem;
+  height: 7rem;
+
+  // background: #000;
+  align-items: center;
+  align-content: center;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin: 2rem 9rem 6rem;
+}
+.card1Naiss {
+  width: 53rem;
+  height: 7rem;
+
+  // background: #000;
+  align-items: center;
+  align-content: center;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin: -5rem 9rem 6rem;
+}
+
+.radioDate {
+  display: flex;
+  margin-left: 8rem;
+  margin-top: -4rem;
+}
+.parrainInfo {
+  display: flex;
+  margin-left: 8rem;
+  // margin-top: -4rem;
+}
+.checkRadio {
+  display: block;
+}
+
+.gender {
+  display: block;
+}
+
+.form {
+  box-shadow: -1px 5px 5px #929394de;
+  color: black;
+  font-size: 17px;
+}
+
+input {
+  background: white;
+}

@@ -1,0 +1,263 @@
+<div class="p-3 card-header bg-success" style="height: 2.9rem">
+  <h4 class="display: flex">
+    Enregistrement des projet de l' enfant :
+    <span class="text-white">{{ child.numeroBeneficiaire }}</span>
+  </h4>
+  <span class="mt-5">
+    <strong>NB :</strong> Veillez renseignez tous les
+    <strong> champs obligatoire</strong></span
+  >
+</div>
+
+<form class="form" (ngSubmit)="onSubmit()">
+  <div class="parrainInfo">
+    <div class="mb-3" style="margin-right: 6rem">
+      <label for="parrainName" class="form-label" style="color: black"
+        >N° Bénéficiaire
+      </label>
+      <input
+        type="name"
+        class="form-control"
+        id="numeroBeneficiaire"
+        name="numeroBeneficiaire"
+        style="text-transform: uppercase"
+        required
+        [(ngModel)]="child.numeroBeneficiaire"
+        disabled
+      />
+    </div>
+
+    <!-- ///////////////////////////////////////// -->
+    <div class="mb-3" style="margin-right: 6rem">
+      <label for="parrainName" class="form-label" style="color: black"
+        >Nom
+      </label>
+      <input
+        type="name"
+        class="form-control"
+        id="lastNameChild"
+        name="lastNameChild"
+        style="text-transform: uppercase"
+        required
+        [(ngModel)]="child.lastNameChild"
+        disabled
+      />
+    </div>
+
+    <!-- ///////////////////////////////////////// -->
+    <div class="mb-3" style="margin-right: 6rem">
+      <label for="firstNameChild" class="form-label" style="color: black"
+        >Prénoms de l'énfant
+      </label>
+      <input
+        type="name"
+        class="form-control"
+        id="firstNameChild"
+        name="firstNameChild"
+        disabled
+        style="text-transform: capitalize"
+        required
+        [(ngModel)]="child.firstNameChild"
+      />
+    </div>
+  </div>
+  <div class="parrainInfo">
+    <div class="mb-3" style="margin-right: 6rem">
+      <label for="parrainName" class="form-label" style="color: black"
+        >Projet 1
+      </label>
+      <input
+        type="name"
+        class="form-control"
+        id="project1"
+        name="project1"
+        required
+        [(ngModel)]="child.project1"
+        style="text-transform: capitalize"
+      />
+    </div>
+
+    <!-- ///////////////////////////////////////// -->
+    <div class="mb-3" style="margin-right: 6rem">
+      <label for="parrainName" class="form-label" style="color: black"
+        >Projet 2
+      </label>
+      <input
+        type="name"
+        class="form-control"
+        id="project2"
+        name="project2"
+        required
+        [(ngModel)]="child.project2"
+        style="text-transform: capitalize"
+      />
+    </div>
+
+    <!-- ///////////////////////////////////////// -->
+    <div class="mb-3" style="color: black">
+      <label for="numeroParrain" class="form-label" style="color: black"
+        >Projet 3
+      </label>
+      <input
+        type="name"
+        class="form-control"
+        id="project3"
+        name="project3"
+        required
+        [(ngModel)]="child.project3"
+        style="background: white; text-transform: capitalize"
+      />
+    </div>
+  </div>
+  <div class="parrainInfo">
+    <div class="mb-3" style="margin-right: 6rem">
+      <label for="parrainName" class="form-label" style="color: black"
+        >Projet 4
+      </label>
+      <input
+        type="name"
+        class="form-control"
+        id="project4"
+        name="project4"
+        required
+        [(ngModel)]="child.project4"
+        style="text-transform: capitalize"
+      />
+    </div>
+
+    <!-- ///////////////////////////////////////// -->
+    <div class="mb-3" style="margin-right: 6rem">
+      <label for="parrainName" class="form-label" style="color: black"
+        >Projet 5
+      </label>
+      <input
+        type="name"
+        class="form-control"
+        id="project5"
+        name="project5"
+        required
+        [(ngModel)]="child.project5"
+        style="text-transform: capitalize"
+      />
+    </div>
+
+    <!-- ///////////////////////////////////////// -->
+    <div class="mb-3" style="color: black">
+      <label for="numeroParrain" class="form-label" style="color: black"
+        >Projet 6
+      </label>
+      <input
+        type="name"
+        class="form-control"
+        id="project6"
+        name="project6"
+        required
+        [(ngModel)]="child.project6"
+        style="background: white; text-transform: capitalize"
+      />
+    </div>
+  </div>
+
+  <div class="parrainInfo">
+    <div class="mb-3" style="margin-right: 6rem">
+      <label for="parrainName" class="form-label" style="color: black"
+        >Projet 7
+      </label>
+      <input
+        type="name"
+        class="form-control"
+        id="project7"
+        name="project7"
+        required
+        [(ngModel)]="child.project7"
+        style="text-transform: capitalize"
+      />
+    </div>
+
+    <!-- ///////////////////////////////////////// -->
+    <div class="mb-3" style="margin-right: 6rem">
+      <label for="parrainName" class="form-label" style="color: black"
+        >Projet 8
+      </label>
+      <input
+        type="name"
+        class="form-control"
+        id="project8"
+        name="project8"
+        required
+        [(ngModel)]="child.project8"
+        style="text-transform: capitalize"
+      />
+    </div>
+
+    <!-- ///////////////////////////////////////// -->
+    <div class="mb-3" style="color: black">
+      <label for="numeroParrain" class="form-label" style="color: black"
+        >Projet 9
+      </label>
+      <input
+        type="name"
+        class="form-control"
+        id="project9"
+        name="project9"
+        required
+        [(ngModel)]="child.project9"
+        style="background: white; text-transform: capitalize"
+      />
+    </div>
+  </div>
+  <div class="parrainInfo">
+    <div class="mb-3" style="margin-right: 6rem">
+      <label for="parrainName" class="form-label" style="color: black"
+        >Projet 10
+      </label>
+      <input
+        type="name"
+        class="form-control"
+        id="project10"
+        name="project10"
+        required
+        [(ngModel)]="child.project10"
+        style="text-transform: capitalize"
+      />
+    </div>
+
+    <!-- ///////////////////////////////////////// -->
+    <div class="mb-3" style="margin-right: 6rem">
+      <label for="parrainName" class="form-label" style="color: black"
+        >Projet 11
+      </label>
+      <input
+        type="name"
+        class="form-control"
+        id="project11"
+        name="project11"
+        required
+        [(ngModel)]="child.project11"
+        style="text-transform: capitalize"
+      />
+    </div>
+
+    <!-- ///////////////////////////////////////// -->
+    <div class="mb-3" style="color: black">
+      <label for="numeroParrain" class="form-label" style="color: black"
+        >Projet 12
+      </label>
+      <input
+        type="name"
+        class="form-control"
+        id="project12"
+        name="project12"
+        required
+        [(ngModel)]="child.project12"
+        style="background: white; text-transform: capitalize"
+      />
+    </div>
+  </div>
+
+  <div style="margin-left: 28rem; margin-top: 1.5rem">
+    <button type="submit" id="btnChildSave" class="btn btn-primary">
+      Enrégistrer
+    </button>
+  </div>
+</form>

@@ -1,0 +1,111 @@
+<div class="infoChildLog">
+  <div class="page border p-2 rounded border-dark" size="A4">
+    <div
+      class="title mt-5 pb-3 pt-4 align-items-center justify-content-center d-flex"
+    >
+      <h4
+        class="text-center rounded border border-dark w-50 p-2 text-uppercase"
+      >
+        Attestation de fin de parcourt
+      </h4>
+    </div>
+    <div class="content pt-5">
+      <div class="firstContent content rounded border border-dark p-2">
+        <div
+          class="title pt-1 align-items-center justify-content-center d-flex"
+        >
+          <h4 class="text-center text-uppercase">
+            Bènéficiaire : <span>{{ childLog.numeroBeneficiaireLog }}</span>
+          </h4>
+        </div>
+        <div class="d-flex justify-content-between pt-4">
+          <div class="d-block justify-content-between pt-4">
+            <div class="d-flex justify-content-between pt-1">
+              <h5 class="px-4">
+                Nom : <span>{{ childLog.lastNameChildLog }}</span>
+                <!-- <div class="rounded border span1"></div> -->
+              </h5>
+
+              <h5 class="px-4 mx">
+                Sexe : <span>{{ childLog.genderLog }}</span>
+              </h5>
+            </div>
+            <div class="d-flex justify-content-between pt-1">
+              <h5 class="px-4">
+                Prénoms : <span>{{ childLog.firstNameChildLog }}</span>
+              </h5>
+              <h5 class="px-4 mx">
+                Date de naissance :
+                <span>
+                  {{ childLog.jourNaissLog }}/ {{ childLog.moisNaissLog }}/
+                  {{ childLog.anneNaissLog }}
+                </span>
+              </h5>
+            </div>
+            <h5 class="px-4">
+              Status : <span>{{ childLog.statusLog }}</span>
+            </h5>
+          </div>
+        </div>
+        <div
+          class="title pt-5 mt-5 align-items-center justify-content-center d-flex"
+        >
+          <h5 class="text-center text-uppercase">
+            informations supplémentaire
+          </h5>
+        </div>
+        <div class="d-flex justify-content-between pt-4">
+          <div class="d-block justify-content-between pt-4">
+            <div class="d-flex justify-content-between pt-1">
+              <h5 class="px-4">
+                Premier projet : <span>{{ childLog.firstproject }}</span>
+              </h5>
+              <h5 class="px-4 mx2">
+                Classe d'entré : <span>{{ childLog.startClass }}</span>
+              </h5>
+            </div>
+            <div class="d-flex justify-content-between pt-1">
+              <h5 class="px-4">
+                Projet final : <span>{{ childLog.lastproject }}</span>
+              </h5>
+              <h5 class="px-4 mx2">
+                Classe final : <span>{{ childLog.endClass }}</span>
+              </h5>
+            </div>
+            <div class="d-flex justify-content-between pt-1">
+              <h5 class="px-4">
+                Nom du tuteur : <span>{{ childLog.parrainNameLog }}</span>
+              </h5>
+              <!-- <span class="rounded border border-dark span"></span> -->
+              <h5 class="px-4 mx2">
+                Année d'entrée : <span>{{ childLog.dateEntryLog }}</span>
+              </h5>
+            </div>
+            <div class="d-flex justify-content-between pt-1">
+              <h5 class="px-4">
+                Numéro du tuteur: <span>{{ childLog.numeroParrainLog }}</span>
+              </h5>
+              <h5 class="px-4 mx2">
+                Année de Sortie : <span>{{ childLog.dateOutLog }}</span>
+              </h5>
+            </div>
+          </div>
+        </div>
+
+        <!-- <div class="d-flex justify-content-between pt-1">
+
+        </div>
+        <div class="d-flex justify-content-between pt-1">
+          <h5 class="px-4">Classe final :</h5>
+          <h5 class="px-4">Status :</h5>
+        </div> -->
+      </div>
+    </div>
+  </div>
+
+  <!-- <div class="page" size="A4" layout="landscape"></div>
+  <div class="page" size="A5"></div>
+  <div class="page" size="A5" layout="landscape"></div>
+  <div class="page" size="A3"></div>
+  <div class="page" size="A3" layout="landscape"></div> -->
+</div>

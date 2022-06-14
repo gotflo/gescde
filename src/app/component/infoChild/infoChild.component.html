@@ -1,0 +1,157 @@
+<div class="infoChildLog">
+  <div class="page border p-2 rounded border-dark" size="A4">
+    <div
+      class="title mt-5 pb-3 pt-4 align-items-center justify-content-center d-flex"
+    >
+      <h4
+        class="text-center rounded border border-dark w-50 p-2 text-uppercase"
+      >
+        Information générale
+      </h4>
+    </div>
+    <div class="content pt-5">
+      <div class="firstContent content rounded border border-dark p-2">
+        <div
+          class="title pt-1 align-items-center justify-content-center d-flex"
+        >
+          <h4 class="text-center text-uppercase">
+            Bènéficiaire : <span>{{ child.numeroBeneficiaire }}</span>
+          </h4>
+        </div>
+        <div class="d-flex justify-content-between pt-4">
+          <div class="d-block justify-content-between pt-4">
+            <div class="d-flex justify-content-between pt-1">
+              <h5 class="px-4">
+                Nom : <span>{{ child.lastNameChild }}</span>
+                <!-- <div class="rounded border span1"></div> -->
+              </h5>
+
+              <h5 class="px-4 mx">
+                Sexe : <span>{{ child.gender }}</span>
+              </h5>
+            </div>
+            <div class="d-flex justify-content-between pt-1">
+              <h5 class="px-4">
+                Prénoms : <span>{{ child.firstNameChild }}</span>
+              </h5>
+              <h5 class="px-4 mx">
+                Date de naissance :
+                <span>
+                  {{ child.jourNaiss }}/ {{ child.moisNaiss }}/
+                  {{ child.anneNaiss }}
+                </span>
+              </h5>
+            </div>
+            <h5 class="px-4">
+              Status : <span>{{ child.status }}</span>
+            </h5>
+          </div>
+        </div>
+        <div
+          class="title pt-5 mt-5 align-items-center justify-content-center d-flex"
+        >
+          <h5 class="text-center text-uppercase">
+            informations supplémentaire
+          </h5>
+        </div>
+        <div class="d-flex justify-content-between pt-4">
+          <div class="d-block justify-content-between pt-4">
+            <div class="d-flex justify-content-between pt-1">
+              <h5 class="px-4">
+                Projet 1 : <span>{{ child.project1 }}</span>
+              </h5>
+              <h5 class="px-4 mx2">
+                Classe d'entré : <span>{{ child.startClass }}</span>
+              </h5>
+            </div>
+            <div class="d-flex justify-content-between pt-1">
+              <h5 class="px-4">
+                Projet 2 : <span>{{ child.project2 }}</span>
+              </h5>
+              <h5 class="px-4 mx2">
+                Classe final : <span>{{ child.endClass }}</span>
+              </h5>
+            </div>
+
+            <div class="d-flex justify-content-between pt-1">
+              <h5 class="px-4">
+                Projet 3 : <span>{{ child.project3 }}</span>
+              </h5>
+              <h5 class="px-4 mx2">
+                Projet 4 : <span>{{ child.project4 }}</span>
+              </h5>
+            </div>
+
+            <div class="d-flex justify-content-between pt-1">
+              <h5 class="px-4">
+                Projet 5 : <span>{{ child.project5 }}</span>
+              </h5>
+              <h5 class="px-4 mx2">
+                Projet 6 : <span>{{ child.project6 }}</span>
+              </h5>
+            </div>
+
+            <div class="d-flex justify-content-between pt-1">
+              <h5 class="px-4">
+                Projet 7 : <span>{{ child.project7 }}</span>
+              </h5>
+              <h5 class="px-4 mx2">
+                Projet 8 : <span>{{ child.project8 }}</span>
+              </h5>
+            </div>
+
+            <div class="d-flex justify-content-between pt-1">
+              <h5 class="px-4">
+                Projet 9 : <span>{{ child.project9 }}</span>
+              </h5>
+              <h5 class="px-4 mx2">
+                Projet 10 : <span>{{ child.project10 }}</span>
+              </h5>
+            </div>
+
+            <div class="d-flex justify-content-between pt-1">
+              <h5 class="px-4">
+                Projet 11 : <span>{{ child.project11 }}</span>
+              </h5>
+              <h5 class="px-4 mx2">
+                Projet 12 : <span>{{ child.project12 }}</span>
+              </h5>
+            </div>
+
+            <div class="d-flex justify-content-between pt-1">
+              <h5 class="px-4">
+                Nom du tuteur : <span>{{ child.parrainName }}</span>
+              </h5>
+              <!-- <span class="rounded border border-dark span"></span> -->
+              <h5 class="px-4 mx2">
+                Année d'entrée : <span>{{ child.dateEntry }}</span>
+              </h5>
+            </div>
+            <div class="d-flex justify-content-between pt-1">
+              <h5 class="px-4">
+                Numéro du tuteur: <span>{{ child.numeroParrain }}</span>
+              </h5>
+              <h5 class="px-4 mx2">
+                Année de Sortie : <span>{{ child.dateOut }}</span>
+              </h5>
+            </div>
+          </div>
+        </div>
+
+        <!-- <div class="d-flex justify-content-between pt-1">
+
+        </div>
+        <div class="d-flex justify-content-between pt-1">
+          <h5 class="px-4">Classe final :</h5>
+          <h5 class="px-4">Status :</h5>
+        </div> -->
+      </div>
+    </div>
+  </div>
+
+  <!-- <div class="page" size="A4" layout="landscape"></div>
+  <div class="page" size="A5"></div>
+  <div class="page" size="A5" layout="landscape"></div>
+  <div class="page" size="A3"></div>
+  <div class="page" size="A3" layout="landscape"></div> -->
+</div>

@@ -1,0 +1,17 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import url("https://fonts.googleapis.com/css?family=Nunito+Sans:300,400,600,700,800");
+
+body::-webkit-scrollbar {
+  width: 7px; /* width of the entire scrollbar */
+}
+
+body::-webkit-scrollbar-track {
+  background: rgb(0, 140, 255); /* color of the tracking area */
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: rgba(41, 61, 240, 0.616); /* color of the scroll thumb */
+  border-radius: 15px; /* roundness of the scroll thumb */
+  border: 2px solid rgb(155, 233, 207); /* creates padding around scroll thumb */
+}

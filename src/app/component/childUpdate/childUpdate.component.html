@@ -1,0 +1,320 @@
+<div class="p-3 card-header bg-success" style="height: 2.9rem">
+  <h4 class="display: flex">
+    Modification des informations sur l' enfant :
+    <span class="text-white">{{ child.numeroBeneficiaire }}</span>
+  </h4>
+  <span class="mt-5">
+    <strong>NB :</strong> Veillez renseignez tous les
+    <strong> champs obligatoire</strong></span
+  >
+</div>
+
+<form class="form" (ngSubmit)="onSubmit()">
+  <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1 card1">
+    <div class="row">
+      <div class="card2">
+        <!-- numeroBeneficiaire -->
+        <div class="mb-3 flex gauche">
+          <label
+            for="numeroBeneficiaire"
+            class="form-label"
+            style="color: black"
+            >N° Bénéficiare</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            id="numeroBeneficiaire"
+            name="numeroBeneficiaire"
+            disabled
+            required
+            [(ngModel)]="child.numeroBeneficiaire"
+            aria-describedby="emailHelp"
+            style="text-transform: uppercase"
+          />
+          <div id="emailHelp" class="form-text">Champ obligatoire</div>
+        </div>
+        <!-- lastNameChild -->
+        <div class="mb-3 flex milieu">
+          <label for="lastNameChild" class="form-label" style="color: black"
+            >Nom de famille</label
+          >
+          <input
+            type="name"
+            class="form-control"
+            id="lastNameChild"
+            name="lastNameChild"
+            required
+            [(ngModel)]="child.lastNameChild"
+            style="text-transform: uppercase"
+            aria-describedby="emailHelp"
+          />
+          <div id="emailHelp" class="form-text">Champ obligatoire</div>
+        </div>
+        <!-- firstNameChild -->
+        <div class="mb-3 flex droit">
+          <label for="firstNameChild" class="form-label" style="color: black"
+            >Prénoms</label
+          >
+          <input
+            type="name"
+            class="form-control"
+            id="firstNameChild"
+            name="firstNameChild"
+            required
+            [(ngModel)]="child.firstNameChild"
+            style="text-transform: capitalize"
+            aria-describedby="emailHelp"
+          />
+          <div id="emailHelp" class="form-text">Champ obligatoire</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1 card1Naiss">
+    <div class="row">
+      <div class="card2Naiss">
+        <!-- jourNaiss -->
+        <div class="form-group flex gaucheDay">
+          <label for="jourNaiss">Jour</label>
+          <input
+            type="name"
+            class="form-control"
+            id="jourNaiss"
+            name="jourNaiss"
+            required
+            [(ngModel)]="child.jourNaiss"
+            aria-describedby="emailHelp"
+            style="width: 8rem; margin-right: 2.5rem"
+          />
+          <div id="emailHelp" class="form-text">Champ obligatoire</div>
+        </div>
+        <!-- moisNaiss -->
+        <div class="form-group flex milieuMonth">
+          <label for="moisNaiss">Mois</label>
+          <input
+            type="name"
+            class="form-control"
+            id="moisNaiss"
+            name="moisNaiss"
+            required
+            [(ngModel)]="child.moisNaiss"
+            aria-describedby="emailHelp"
+            style="width: 8rem; margin-right: 1.4rem"
+          />
+          <div id="emailHelp" class="form-text">Champ obligatoire</div>
+        </div>
+        <!-- anneNaiss -->
+
+        <div class="form-group flex droitYear">
+          <label for="anneNaiss">Année :</label>
+          <input
+            type="name"
+            class="form-control"
+            id="anneNaiss"
+            name="anneNaiss"
+            required
+            [(ngModel)]="child.anneNaiss"
+            aria-describedby="emailHelp"
+            style="width: 8rem"
+          />
+          <div id="emailHelp" class="form-text">Champ obligatoire</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="radioDate">
+    <div class="checkRadio" style="margin-right: 5rem">
+      <label class="form-label" style="color: black">Status</label>
+      <div class="form-check">
+        <input
+          class="form-check-input"
+          type="radio"
+          name="status"
+          id="status"
+          required
+          [(ngModel)]="child.status"
+          value="Sponsorisé"
+        />
+        <!-- checked -->
+        <label class="form-check-label" for="exampleRadios1">
+          Sponsorisé
+        </label>
+      </div>
+      <div class="form-check">
+        <input
+          class="form-check-input"
+          type="radio"
+          name="status"
+          required
+          [(ngModel)]="child.status"
+          id="status"
+          value="Non Sponsorisé"
+        />
+        <label class="form-check-label" for="exampleRadios2">
+          Non Sponsorisé
+        </label>
+      </div>
+    </div>
+    <!-- ///////////////////Gender//////////////////// -->
+    <div class="checkRadio" style="margin-right: 5.5rem">
+      <label class="form-label" style="color: black">Genre</label>
+      <div class="gender">
+        <div class="form-check form-check-inline">
+          <input
+            class="form-check-input"
+            type="radio"
+            id="gender"
+            name="gender"
+            required
+            [(ngModel)]="child.gender"
+            value="M"
+          />
+          <label class="form-check-label" for="inlineRadio1">Masculin</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input
+            class="form-check-input"
+            type="radio"
+            name="gender"
+            required
+            [(ngModel)]="child.gender"
+            id="gender"
+            value="F"
+          />
+          <label class="form-check-label" for="inlineRadio2">Féminin</label>
+        </div>
+      </div>
+    </div>
+
+    <!-- ////////////////DateEnter////////////////////////////// -->
+
+    <div class="mb-3">
+      <div class="form-group flex">
+        <label for="dateEntry">Année d'entrer</label>
+        <input
+          type="name"
+          class="form-control"
+          id="dateEntry"
+          name="dateEntry"
+          required
+          [(ngModel)]="child.dateEntry"
+          aria-describedby="emailHelp"
+          style="width: 8rem"
+        />
+        <div id="emailHelp" class="form-text">Champ obligatoire</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- /////////Info parrain////////// -->
+  <div class="parrainInfo">
+    <div class="mb-3" style="margin-right: 3.5rem">
+      <label for="parrainName" class="form-label" style="color: black"
+        >Nom & prénoms du tuteur
+      </label>
+      <input
+        type="name"
+        class="form-control"
+        id="parrainName"
+        name="parrainName"
+        required
+        [(ngModel)]="child.parrainName"
+        aria-describedby="emailHelp"
+      />
+      <div id="emailHelp" class="form-text">Champ obligatoire</div>
+    </div>
+    <div class="mb-3" style="color: black" style="margin-right: 3.5rem">
+      <label for="numeroParrain" class="form-label" style="color: black"
+        >Téléphone du tuteur</label
+      >
+      <input
+        type="name"
+        class="form-control"
+        id="numeroParrain"
+        name="numeroParrain"
+        required
+        [(ngModel)]="child.numeroParrain"
+        aria-describedby="emailHelp"
+        style="background: white"
+      />
+      <div id="emailHelp" class="form-text">Champ obligatoire</div>
+    </div>
+    <div class="mb-3 flex milieu2">
+      <label for="observation" class="form-label" style="color: black"
+        >Observation sur l'enfant</label
+      >
+      <input
+        type="name"
+        class="form-control"
+        name="observation"
+        id="observation"
+        required
+        [(ngModel)]="child.observation"
+        aria-describedby="emailHelp"
+        style="width: 15rem"
+      />
+    </div>
+  </div>
+
+  <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1 card1Naiss2">
+    <div class="row">
+      <div class="card2Naiss">
+        <div class="mb-3 flex gauche2" style="margin-right: 9rem">
+          <label for="dateOut" class="form-label" style="color: black"
+            >Année de sortie</label
+          >
+          <input
+            type="name"
+            class="form-control"
+            name="dateOut"
+            id="dateOut"
+            required
+            [(ngModel)]="child.dateOut"
+            aria-describedby="emailHelp"
+            style="width: 9rem"
+          />
+        </div>
+
+        <div class="mb-3 flex milieu2" style="margin-right: 9rem">
+          <label for="startClass" class="form-label" style="color: black"
+            >Classe d'entrée</label
+          >
+          <input
+            type="name"
+            class="form-control"
+            name="startClass"
+            id="startClass"
+            required
+            [(ngModel)]="child.startClass"
+            aria-describedby="emailHelp"
+            style="width: 9rem"
+          />
+          <div id="emailHelp" class="form-text">Champ obligatoire</div>
+        </div>
+
+        <div class="mb-3 flex droit2">
+          <label for="endClass" class="form-label" style="color: black"
+            >Classe de sortie</label
+          >
+          <input
+            type="name"
+            class="form-control"
+            name="endClass"
+            id="endClass"
+            required
+            [(ngModel)]="child.endClass"
+            aria-describedby="emailHelp"
+            style="width: 9rem"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-left: 28rem; margin-top: 1rem">
+    <button type="submit" id="btnChildSave" class="btn btn-primary">
+      MODIFIER
+    </button>
+  </div>
+</form>

@@ -1,0 +1,1532 @@
+<div class="p-3 card-header bg-success" style="height: 2.9rem">
+  <h4 class="display: flex">Liste total des activités de l'année</h4>
+</div>
+
+<button
+  routerLink="/component/activityManager"
+  class="btn btn-outline-info mb-3 mt-3 addbn"
+>
+  <i class="bi bi-plus-circle" style="margin-right: 0.3rem"></i>
+  Ajouter Acivitée
+</button>
+<div class="card TableBody">
+  <div class="card-header btn-outline-info">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="md-form">
+          <input
+            style="height: 2rem"
+            placeholder="Recherche ..."
+            type="text"
+            [(ngModel)]="searchText"
+            class="form-control"
+            id="search"
+            mdbInput
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="tableebody">
+    <div class="card-body">
+      <div class="table-responsive">
+        <table class="table align-middle">
+          <thead>
+            <tr>
+              <th class="title" style="margin-right: -99px">#</th>
+              <th class="title">Désignation</th>
+              <th class="title">Déscription</th>
+              <th class="title">Date</th>
+              <th class="title">Status</th>
+              <th class="title">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr
+              *ngFor="
+                let activity of activitys | filter: searchText;
+                index as i
+              "
+              class="colorr"
+            >
+              <td>
+                <h5 class="title">
+                  {{ i + 1 }}
+                </h5>
+              </td>
+              <td>{{ activity.nameActivity }}</td>
+              <td>{{ activity.descriptionActivity }}</td>
+              <td>{{ activity.dayActivity }}/{{ activity.monthActivity }}</td>
+              <td>
+                <div
+                  class="trueIcon feed-icon round round-sm text-white d-flex align-items-center justify-content-center rounded-circle"
+                  *ngIf="activity.finish == true"
+                >
+                  <i
+                    class="bi bi-check-circle"
+                    ngbTooltip="Activité déjà réalisé"
+                  ></i>
+                </div>
+                <div
+                  class="falseIcon feed-icon round round-sm text-white d-flex align-items-center justify-content-center rounded-circle"
+                  *ngIf="activity.finish != true"
+                >
+                  <i class="bi bi-circle" ngbTooltip="Activité non réalisé"></i>
+                </div>
+              </td>
+
+              <td>
+                <span class="table-update">
+                  <button
+                    type="button"
+                    class="btn btn-outline-info btn-rounded btn-sm my-0"
+                    data-mdb-ripple-color="dark"
+                    style="margin-right: 8px"
+                    (click)="updateActivity(activity.idActivity)"
+                  >
+                    <i
+                      class="bi bi-pencil-square"
+                      ngbTooltip="Modifier l'activité"
+                    ></i>
+                  </button>
+                </span>
+
+                <span class="table-remove"
+                  ><button
+                    type="button"
+                    class="btn btn-outline-warning btn-rounded btn-sm my-0"
+                    style="margin-right: 8px"
+                  >
+                    <i class="bi bi-eye-fill" ngbTooltip="Vusioner"></i></button
+                ></span>
+
+                <span class="table-remove"
+                  ><button
+                    type="button"
+                    class="btn btn-danger btn-rounded btn-sm my-0"
+                    style="margin-left: 8px; width: 2.5rem; font-weight: 100"
+                    mwlConfirmationPopover
+                    [popoverTitle]="popoverTitle"
+                    [popoverMessage]="popoverMessage"
+                    [confirmText]="confirmText"
+                    [cancelText]="cancelText"
+                    placement="left"
+                    (confirm)="removeActivity(activity.idActivity)"
+                    (cancel)="cancelClicked = true; showWarn()"
+                    confirmButtonType="danger"
+                    cancelButtonType="outline-secondary"
+                    [appendToBody]="true"
+                  >
+                    <i
+                      class="bi bi-trash"
+                      ngbTooltip="Supprimer l'activité"
+                    ></i></button
+                ></span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <button (click)="exportActivityPdf()" class="btn btn-success float-sm-end">
+    Imprimé
+  </button>
+</div>
+
+<!-- <div class="row">
+  <div class="col-md-12">
+    <div class="card">
+      <div class="col-12">
+        <div class="card" style="width: 101%">
+          <div class="p-3 card-header bg-success" style="height: 2.9rem">
+            <h4 class="display: flex">Liste total des ativitées :</h4>
+          </div>
+          <div class="card-body border-top">
+            <ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-tabs">
+              <li [ngbNavItem]="1">
+                <a ngbNavLink>Janv</a>
+                <ng-template ngbNavContent>
+                  <div class="card TableBody">
+                    <div class="card-header btn-outline-info">
+                      <div class="row">
+                        <div class="col-md-12">
+                          <div class="md-form">
+                            <input
+                              style="height: 2rem"
+                              placeholder="Recherche ..."
+                              type="text"
+                              [(ngModel)]="searchText"
+                              class="form-control"
+                              id="search"
+                              mdbInput
+                            />
+
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="tableebody">
+                      <div class="card-body">
+
+                        <div class="table-responsive">
+                          <table class="table align-middle">
+                            <thead>
+                              <tr>
+
+                                <th class="title">Désignation</th>
+                                <th class="title">Déscription</th>
+                                <th class="title">Date</th>
+                                <th class="title">Status</th>
+                                <th class="title">Action</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr
+                                *ngFor="
+                                  let activity of ActivityJanv;
+                                  index as i
+                                "
+                                class="colorr"
+                              >
+                                <td>{{ activity.nameActivity }}</td>
+                                <td>{{ activity.descriptionActivity }}</td>
+                                <td>
+                                  {{ activity.dayActivity }}/{{
+                                    activity.monthActivity
+                                  }}/{{ activity.yearActivity }}
+                                </td>
+                                <td>
+                                  <div
+                                    class="trueIcon feed-icon round round-sm text-white d-flex align-items-center justify-content-center rounded-circle"
+                                    *ngIf="activity.finish == true"
+                                  >
+                                    <i
+                                      class="bi bi-check-circle"
+                                      ngbTooltip="Activité déjà réalisé"
+                                    ></i>
+                                  </div>
+                                  <div
+                                    class="falseIcon feed-icon round round-sm text-white d-flex align-items-center justify-content-center rounded-circle"
+                                    *ngIf="activity.finish != true"
+                                  >
+                                    <i class="bi bi-circle"></i>
+                                  </div>
+                                </td>
+                                <td>
+                                  <span class="table-update">
+                                    <button
+                                      type="button"
+                                      class="btn btn-outline-info btn-rounded btn-sm my-0"
+                                      data-mdb-ripple-color="dark"
+                                      style="margin-right: 2px"
+                                    >
+                                      <i class="bi bi-pencil-square"></i>
+                                    </button>
+                                  </span>
+
+                                  <span class="table-update">
+                                    <button
+                                      type="button"
+                                      class="btn btn-outline-success btn-rounded btn-sm my-0"
+                                      data-mdb-ripple-color="dark"
+                                      style="margin-right: 2px"
+                                    >
+                                      <i class="bi bi-peace"></i>
+                                    </button>
+                                  </span>
+
+                                  <span class="table-remove"
+                                    ><button
+                                      type="button"
+                                      class="btn btn-outline-warning btn-rounded btn-sm my-0"
+                                      style="margin-right: 2px"
+                                    >
+                                      <i class="bi bi-eye-fill"></i></button
+                                  ></span>
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+                    <button class="btn btn-success float-sm-end">
+                      Imprimé
+                    </button>
+                  </div>
+                </ng-template>
+              </li>
+              <li [ngbNavItem]="2">
+                <a ngbNavLink>Fev</a>
+                <ng-template ngbNavContent>
+                  <div class="card TableBody">
+                    <div class="card-header btn-outline-info">
+                      <div class="row">
+                        <div class="col-md-12">
+                          <div class="md-form">
+                            <input
+                              style="height: 2rem"
+                              placeholder="Recherche ..."
+                              type="text"
+                              [(ngModel)]="searchText"
+                              class="form-control"
+                              id="search"
+                              mdbInput
+                            />
+
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="tableebody">
+                      <div class="card-body">
+
+                        <div class="table-responsive">
+                          <table class="table align-middle">
+                            <thead>
+                              <tr>
+
+                                <th class="title">N° Bénéficiaire</th>
+                                <th class="title">Nom</th>
+                                <th class="title">Prenoms</th>
+                                <th class="title">Date de naissance</th>
+                                <th class="title">Genre</th>
+                                <th class="title">Status</th>
+
+                                <th class="title">Action</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr
+                                *ngFor="let activity of ActivityFev; index as i"
+                                class="colorr"
+                              >
+                                <td>{{ activity.nameActivity }}</td>
+                                <td>{{ activity.descriptionActivity }}</td>
+                                <td>
+                                  {{ activity.dayActivity }}/{{
+                                    activity.monthActivity
+                                  }}/{{ activity.yearActivity }}
+                                </td>
+                                <td>
+                                  <div
+                                    class="trueIcon feed-icon round round-sm text-white d-flex align-items-center justify-content-center rounded-circle"
+                                    *ngIf="activity.finish == true"
+                                  >
+                                    <i
+                                      class="bi bi-check-circle"
+                                      ngbTooltip="Activité déjà réalisé"
+                                    ></i>
+                                  </div>
+                                  <div
+                                    class="falseIcon feed-icon round round-sm text-white d-flex align-items-center justify-content-center rounded-circle"
+                                    *ngIf="activity.finish != true"
+                                  >
+                                    <i class="bi bi-circle"></i>
+                                  </div>
+                                </td>
+
+                                <td>
+                                  <span class="table-update">
+                                    <button
+                                      type="button"
+                                      class="btn btn-outline-info btn-rounded btn-sm my-0"
+                                      data-mdb-ripple-color="dark"
+                                      style="margin-right: 2px"
+                                    >
+                                      <i class="bi bi-pencil-square"></i>
+                                    </button>
+                                  </span>
+
+                                  <span class="table-update">
+                                    <button
+                                      type="button"
+                                      class="btn btn-outline-success btn-rounded btn-sm my-0"
+                                      data-mdb-ripple-color="dark"
+                                      style="margin-right: 2px"
+                                    >
+                                      <i class="bi bi-peace"></i>
+                                    </button>
+                                  </span>
+
+                                  <span class="table-remove"
+                                    ><button
+                                      type="button"
+                                      class="btn btn-outline-warning btn-rounded btn-sm my-0"
+                                      style="margin-right: 2px"
+                                    >
+                                      <i class="bi bi-eye-fill"></i></button
+                                  ></span>
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+                    <button class="btn btn-success float-sm-end">
+                      Imprimé
+                    </button>
+                  </div>
+                </ng-template>
+              </li>
+
+              <li [ngbNavItem]="3">
+                <a ngbNavLink>Mars</a>
+                <ng-template ngbNavContent>
+                  <div class="card TableBody">
+                    <div class="card-header btn-outline-info">
+                      <div class="row">
+                        <div class="col-md-12">
+                          <div class="md-form">
+                            <input
+                              style="height: 2rem"
+                              placeholder="Recherche ..."
+                              type="text"
+                              [(ngModel)]="searchText"
+                              class="form-control"
+                              id="search"
+                              mdbInput
+                            />
+
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="tableebody">
+                      <div class="card-body">
+                        <div class="table-responsive">
+                          <table class="table align-middle">
+                            <thead>
+                              <tr>
+
+                                <th class="title">N° Bénéficiaire</th>
+                                <th class="title">Nom</th>
+                                <th class="title">Prenoms</th>
+                                <th class="title">Date de naissance</th>
+                                <th class="title">Genre</th>
+                                <th class="title">Status</th>
+
+                                <th class="title">Action</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr
+                                *ngFor="let activity of ActivityMars"
+                                class="colorr"
+                              >
+                                <td>{{ activity.nameActivity }}</td>
+                                <td>{{ activity.descriptionActivity }}</td>
+                                <td>
+                                  {{ activity.dayActivity }}/{{
+                                    activity.monthActivity
+                                  }}/{{ activity.yearActivity }}
+                                </td>
+                                <td>
+                                  <div
+                                    class="trueIcon feed-icon round round-sm text-white d-flex align-items-center justify-content-center rounded-circle"
+                                    *ngIf="activity.finish == true"
+                                  >
+                                    <i
+                                      class="bi bi-check-circle"
+                                      ngbTooltip="Activité déjà réalisé"
+                                    ></i>
+                                  </div>
+                                  <div
+                                    class="falseIcon feed-icon round round-sm text-white d-flex align-items-center justify-content-center rounded-circle"
+                                    *ngIf="activity.finish != true"
+                                  >
+                                    <i class="bi bi-circle"></i>
+                                  </div>
+                                </td>
+
+                                <td>
+                                  <span class="table-update">
+                                    <button
+                                      type="button"
+                                      class="btn btn-outline-info btn-rounded btn-sm my-0"
+                                      data-mdb-ripple-color="dark"
+                                      style="margin-right: 2px"
+                                    >
+                                      <i class="bi bi-pencil-square"></i>
+                                    </button>
+                                  </span>
+
+                                  <span class="table-update">
+                                    <button
+                                      type="button"
+                                      class="btn btn-outline-success btn-rounded btn-sm my-0"
+                                      data-mdb-ripple-color="dark"
+                                      style="margin-right: 2px"
+                                    >
+                                      <i class="bi bi-peace"></i>
+                                    </button>
+                                  </span>
+
+                                  <span class="table-remove"
+                                    ><button
+                                      type="button"
+                                      class="btn btn-outline-warning btn-rounded btn-sm my-0"
+                                      style="margin-right: 2px"
+                                    >
+                                      <i class="bi bi-eye-fill"></i></button
+                                  ></span>
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+                    <button class="btn btn-success float-sm-end">
+                      Imprimé
+                    </button>
+                  </div>
+                </ng-template>
+              </li>
+              <li [ngbNavItem]="4">
+                <a ngbNavLink>Avril</a>
+                <ng-template ngbNavContent>
+                  <div class="card TableBody">
+                    <div class="card-header btn-outline-info">
+                      <div class="row">
+                        <div class="col-md-12">
+                          <div class="md-form">
+                            <input
+                              style="height: 2rem"
+                              placeholder="Recherche ..."
+                              type="text"
+                              [(ngModel)]="searchText"
+                              class="form-control"
+                              id="search"
+                              mdbInput
+                            />
+
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="tableebody">
+                      <div class="card-body">
+                        <div class="table-responsive">
+                          <table class="table align-middle">
+                            <thead>
+                              <tr>
+
+                                <th class="title">N° Bénéficiaire</th>
+                                <th class="title">Nom</th>
+                                <th class="title">Prenoms</th>
+                                <th class="title">Date de naissance</th>
+                                <th class="title">Genre</th>
+                                <th class="title">Status</th>
+
+                                <th class="title">Action</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr
+                                *ngFor="
+                                  let activity of ActivityAvril;
+                                  index as i
+                                "
+                                class="colorr"
+                              >
+                                <td>{{ activity.nameActivity }}</td>
+                                <td>{{ activity.descriptionActivity }}</td>
+                                <td>
+                                  {{ activity.dayActivity }}/{{
+                                    activity.monthActivity
+                                  }}/{{ activity.yearActivity }}
+                                </td>
+                                <td>
+                                  <div
+                                    class="trueIcon feed-icon round round-sm text-white d-flex align-items-center justify-content-center rounded-circle"
+                                    *ngIf="activity.finish == true"
+                                  >
+                                    <i
+                                      class="bi bi-check-circle"
+                                      ngbTooltip="Activité déjà réalisé"
+                                    ></i>
+                                  </div>
+                                  <div
+                                    class="falseIcon feed-icon round round-sm text-white d-flex align-items-center justify-content-center rounded-circle"
+                                    *ngIf="activity.finish != true"
+                                  >
+                                    <i class="bi bi-circle"></i>
+                                  </div>
+                                </td>
+
+                                <td>
+                                  <span class="table-update">
+                                    <button
+                                      type="button"
+                                      class="btn btn-outline-info btn-rounded btn-sm my-0"
+                                      data-mdb-ripple-color="dark"
+                                      style="margin-right: 2px"
+                                    >
+                                      <i class="bi bi-pencil-square"></i>
+                                    </button>
+                                  </span>
+
+                                  <span class="table-update">
+                                    <button
+                                      type="button"
+                                      class="btn btn-outline-success btn-rounded btn-sm my-0"
+                                      data-mdb-ripple-color="dark"
+                                      style="margin-right: 2px"
+                                    >
+                                      <i class="bi bi-peace"></i>
+                                    </button>
+                                  </span>
+
+                                  <span class="table-remove"
+                                    ><button
+                                      type="button"
+                                      class="btn btn-outline-warning btn-rounded btn-sm my-0"
+                                      style="margin-right: 2px"
+                                    >
+                                      <i class="bi bi-eye-fill"></i></button
+                                  ></span>
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+                    <button class="btn btn-success float-sm-end">
+                      Imprimé
+                    </button>
+                  </div>
+                </ng-template>
+              </li>
+              <li [ngbNavItem]="5">
+                <a ngbNavLink>Mai</a>
+                <ng-template ngbNavContent>
+                  <div class="card TableBody">
+                    <div class="card-header btn-outline-info">
+                      <div class="row">
+                        <div class="col-md-12">
+                          <div class="md-form">
+                            <input
+                              style="height: 2rem"
+                              placeholder="Recherche ..."
+                              type="text"
+                              [(ngModel)]="searchText"
+                              class="form-control"
+                              id="search"
+                              mdbInput
+                            />
+
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="tableebody">
+                      <div class="card-body">
+                        <div class="table-responsive">
+                          <table class="table align-middle">
+                            <thead>
+                              <tr>
+
+                                <th class="title">N° Bénéficiaire</th>
+                                <th class="title">Nom</th>
+                                <th class="title">Prenoms</th>
+                                <th class="title">Date de naissance</th>
+                                <th class="title">Genre</th>
+                                <th class="title">Status</th>
+
+                                <th class="title">Action</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr
+                                *ngFor="let activity of ActivityMai; index as i"
+                                class="colorr"
+                              >
+                                <td>{{ activity.nameActivity }}</td>
+                                <td>{{ activity.descriptionActivity }}</td>
+                                <td>
+                                  {{ activity.dayActivity }}/{{
+                                    activity.monthActivity
+                                  }}/{{ activity.yearActivity }}
+                                </td>
+                                <td>
+                                  <div
+                                    class="trueIcon feed-icon round round-sm text-white d-flex align-items-center justify-content-center rounded-circle"
+                                    *ngIf="activity.finish == true"
+                                  >
+                                    <i
+                                      class="bi bi-check-circle"
+                                      ngbTooltip="Activité déjà réalisé"
+                                    ></i>
+                                  </div>
+                                  <div
+                                    class="falseIcon feed-icon round round-sm text-white d-flex align-items-center justify-content-center rounded-circle"
+                                    *ngIf="activity.finish != true"
+                                  >
+                                    <i class="bi bi-circle"></i>
+                                  </div>
+                                </td>
+
+                                <td>
+                                  <span class="table-update">
+                                    <button
+                                      type="button"
+                                      class="btn btn-outline-info btn-rounded btn-sm my-0"
+                                      data-mdb-ripple-color="dark"
+                                      style="margin-right: 2px"
+                                    >
+                                      <i class="bi bi-pencil-square"></i>
+                                    </button>
+                                  </span>
+
+                                  <span class="table-update">
+                                    <button
+                                      type="button"
+                                      class="btn btn-outline-success btn-rounded btn-sm my-0"
+                                      data-mdb-ripple-color="dark"
+                                      style="margin-right: 2px"
+                                    >
+                                      <i class="bi bi-peace"></i>
+                                    </button>
+                                  </span>
+
+                                  <span class="table-remove"
+                                    ><button
+                                      type="button"
+                                      class="btn btn-outline-warning btn-rounded btn-sm my-0"
+                                      style="margin-right: 2px"
+                                    >
+                                      <i class="bi bi-eye-fill"></i></button
+                                  ></span>
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+                    <button class="btn btn-success float-sm-end">
+                      Imprimé
+                    </button>
+                  </div>
+                </ng-template>
+              </li>
+              <li [ngbNavItem]="6">
+                <a ngbNavLink>Juin</a>
+                <ng-template ngbNavContent>
+                  <div class="card TableBody">
+                    <div class="card-header btn-outline-info">
+                      <div class="row">
+                        <div class="col-md-12">
+                          <div class="md-form">
+                            <input
+                              style="height: 2rem"
+                              placeholder="Recherche ..."
+                              type="text"
+                              [(ngModel)]="searchText"
+                              class="form-control"
+                              id="search"
+                              mdbInput
+                            />
+
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="tableebody">
+                      <div class="card-body">
+                        <div class="table-responsive">
+                          <table class="table align-middle">
+                            <thead>
+                              <tr>
+
+                                <th class="title">N° Bénéficiaire</th>
+                                <th class="title">Nom</th>
+                                <th class="title">Prenoms</th>
+                                <th class="title">Date de naissance</th>
+                                <th class="title">Genre</th>
+                                <th class="title">Status</th>
+
+                                <th class="title">Action</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr
+                                *ngFor="
+                                  let activity of ActivityJuin;
+                                  index as i
+                                "
+                                class="colorr"
+                              >
+                                <td>{{ activity.nameActivity }}</td>
+                                <td>{{ activity.descriptionActivity }}</td>
+                                <td>
+                                  {{ activity.dayActivity }}/{{
+                                    activity.monthActivity
+                                  }}/{{ activity.yearActivity }}
+                                </td>
+                                <td>
+                                  <div
+                                    class="trueIcon feed-icon round round-sm text-white d-flex align-items-center justify-content-center rounded-circle"
+                                    *ngIf="activity.finish == true"
+                                  >
+                                    <i
+                                      class="bi bi-check-circle"
+                                      ngbTooltip="Activité déjà réalisé"
+                                    ></i>
+                                  </div>
+                                  <div
+                                    class="falseIcon feed-icon round round-sm text-white d-flex align-items-center justify-content-center rounded-circle"
+                                    *ngIf="activity.finish != true"
+                                  >
+                                    <i class="bi bi-circle"></i>
+                                  </div>
+                                </td>
+
+                                <td>
+                                  <span class="table-update">
+                                    <button
+                                      type="button"
+                                      class="btn btn-outline-info btn-rounded btn-sm my-0"
+                                      data-mdb-ripple-color="dark"
+                                      style="margin-right: 2px"
+                                    >
+                                      <i class="bi bi-pencil-square"></i>
+                                    </button>
+                                  </span>
+
+                                  <span class="table-update">
+                                    <button
+                                      type="button"
+                                      class="btn btn-outline-success btn-rounded btn-sm my-0"
+                                      data-mdb-ripple-color="dark"
+                                      style="margin-right: 2px"
+                                    >
+                                      <i class="bi bi-peace"></i>
+                                    </button>
+                                  </span>
+
+                                  <span class="table-remove"
+                                    ><button
+                                      type="button"
+                                      class="btn btn-outline-warning btn-rounded btn-sm my-0"
+                                      style="margin-right: 2px"
+                                    >
+                                      <i class="bi bi-eye-fill"></i></button
+                                  ></span>
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+                    <button class="btn btn-success float-sm-end">
+                      Imprimé
+                    </button>
+                  </div>
+                </ng-template>
+              </li>
+              <li [ngbNavItem]="7">
+                <a ngbNavLink>Juill</a>
+                <ng-template ngbNavContent>
+                  <div class="card TableBody">
+                    <div class="card-header btn-outline-info">
+                      <div class="row">
+                        <div class="col-md-12">
+                          <div class="md-form">
+                            <input
+                              style="height: 2rem"
+                              placeholder="Recherche ..."
+                              type="text"
+                              [(ngModel)]="searchText"
+                              class="form-control"
+                              id="search"
+                              mdbInput
+                            />
+
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="tableebody">
+                      <div class="card-body">
+                        <div class="table-responsive">
+                          <table class="table align-middle">
+                            <thead>
+                              <tr>
+
+                                <th class="title">N° Bénéficiaire</th>
+                                <th class="title">Nom</th>
+                                <th class="title">Prenoms</th>
+                                <th class="title">Date de naissance</th>
+                                <th class="title">Genre</th>
+                                <th class="title">Status</th>
+
+                                <th class="title">Action</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr
+                                *ngFor="
+                                  let activity of ActivityJuillet;
+                                  index as i
+                                "
+                                class="colorr"
+                              >
+                                <td>{{ activity.nameActivity }}</td>
+                                <td>{{ activity.descriptionActivity }}</td>
+                                <td>
+                                  {{ activity.dayActivity }}/{{
+                                    activity.monthActivity
+                                  }}/{{ activity.yearActivity }}
+                                </td>
+                                <td>
+                                  <div
+                                    class="trueIcon feed-icon round round-sm text-white d-flex align-items-center justify-content-center rounded-circle"
+                                    *ngIf="activity.finish == true"
+                                  >
+                                    <i
+                                      class="bi bi-check-circle"
+                                      ngbTooltip="Activité déjà réalisé"
+                                    ></i>
+                                  </div>
+                                  <div
+                                    class="falseIcon feed-icon round round-sm text-white d-flex align-items-center justify-content-center rounded-circle"
+                                    *ngIf="activity.finish != true"
+                                  >
+                                    <i class="bi bi-circle"></i>
+                                  </div>
+                                </td>
+
+                                <td>
+                                  <span class="table-update">
+                                    <button
+                                      type="button"
+                                      class="btn btn-outline-info btn-rounded btn-sm my-0"
+                                      data-mdb-ripple-color="dark"
+                                      style="margin-right: 2px"
+                                    >
+                                      <i class="bi bi-pencil-square"></i>
+                                    </button>
+                                  </span>
+
+                                  <span class="table-update">
+                                    <button
+                                      type="button"
+                                      class="btn btn-outline-success btn-rounded btn-sm my-0"
+                                      data-mdb-ripple-color="dark"
+                                      style="margin-right: 2px"
+                                    >
+                                      <i class="bi bi-peace"></i>
+                                    </button>
+                                  </span>
+
+                                  <span class="table-remove"
+                                    ><button
+                                      type="button"
+                                      class="btn btn-outline-warning btn-rounded btn-sm my-0"
+                                      style="margin-right: 2px"
+                                    >
+                                      <i class="bi bi-eye-fill"></i></button
+                                  ></span>
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+                    <button class="btn btn-success float-sm-end">
+                      Imprimé
+                    </button>
+                  </div>
+                </ng-template>
+              </li>
+              <li [ngbNavItem]="8">
+                <a ngbNavLink>Août</a>
+                <ng-template ngbNavContent>
+                  <div class="card TableBody">
+                    <div class="card-header btn-outline-info">
+                      <div class="row">
+                        <div class="col-md-12">
+                          <div class="md-form">
+                            <input
+                              style="height: 2rem"
+                              placeholder="Recherche ..."
+                              type="text"
+                              [(ngModel)]="searchText"
+                              class="form-control"
+                              id="search"
+                              mdbInput
+                            />
+
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="tableebody">
+                      <div class="card-body">
+                        <div class="table-responsive">
+                          <table class="table align-middle">
+                            <thead>
+                              <tr>
+
+                                <th class="title">N° Bénéficiaire</th>
+                                <th class="title">Nom</th>
+                                <th class="title">Prenoms</th>
+                                <th class="title">Date de naissance</th>
+                                <th class="title">Genre</th>
+                                <th class="title">Status</th>
+
+                                <th class="title">Action</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr
+                                *ngFor="
+                                  let activity of ActivityAout;
+                                  index as i
+                                "
+                                class="colorr"
+                              >
+                                <td>{{ activity.nameActivity }}</td>
+                                <td>{{ activity.descriptionActivity }}</td>
+                                <td>
+                                  {{ activity.dayActivity }}/{{
+                                    activity.monthActivity
+                                  }}/{{ activity.yearActivity }}
+                                </td>
+                                <td>
+                                  <div
+                                    class="trueIcon feed-icon round round-sm text-white d-flex align-items-center justify-content-center rounded-circle"
+                                    *ngIf="activity.finish == true"
+                                  >
+                                    <i
+                                      class="bi bi-check-circle"
+                                      ngbTooltip="Activité déjà réalisé"
+                                    ></i>
+                                  </div>
+                                  <div
+                                    class="falseIcon feed-icon round round-sm text-white d-flex align-items-center justify-content-center rounded-circle"
+                                    *ngIf="activity.finish != true"
+                                  >
+                                    <i class="bi bi-circle"></i>
+                                  </div>
+                                </td>
+
+                                <td>
+                                  <span class="table-update">
+                                    <button
+                                      type="button"
+                                      class="btn btn-outline-info btn-rounded btn-sm my-0"
+                                      data-mdb-ripple-color="dark"
+                                      style="margin-right: 2px"
+                                    >
+                                      <i class="bi bi-pencil-square"></i>
+                                    </button>
+                                  </span>
+
+                                  <span class="table-update">
+                                    <button
+                                      type="button"
+                                      class="btn btn-outline-success btn-rounded btn-sm my-0"
+                                      data-mdb-ripple-color="dark"
+                                      style="margin-right: 2px"
+                                    >
+                                      <i class="bi bi-peace"></i>
+                                    </button>
+                                  </span>
+
+                                  <span class="table-remove"
+                                    ><button
+                                      type="button"
+                                      class="btn btn-outline-warning btn-rounded btn-sm my-0"
+                                      style="margin-right: 2px"
+                                    >
+                                      <i class="bi bi-eye-fill"></i></button
+                                  ></span>
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+                    <button class="btn btn-success float-sm-end">
+                      Imprimé
+                    </button>
+                  </div>
+                </ng-template>
+              </li>
+              <li [ngbNavItem]="9">
+                <a ngbNavLink>Sept</a>
+                <ng-template ngbNavContent>
+                  <div class="card TableBody">
+                    <div class="card-header btn-outline-info">
+                      <div class="row">
+                        <div class="col-md-12">
+                          <div class="md-form">
+                            <input
+                              style="height: 2rem"
+                              placeholder="Recherche ..."
+                              type="text"
+                              [(ngModel)]="searchText"
+                              class="form-control"
+                              id="search"
+                              mdbInput
+                            />
+
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="tableebody">
+                      <div class="card-body">
+                        <div class="table-responsive">
+                          <table class="table align-middle">
+                            <thead>
+                              <tr>
+
+                                <th class="title">N° Bénéficiaire</th>
+                                <th class="title">Nom</th>
+                                <th class="title">Prenoms</th>
+                                <th class="title">Date de naissance</th>
+                                <th class="title">Genre</th>
+                                <th class="title">Status</th>
+
+                                <th class="title">Action</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr
+                                *ngFor="
+                                  let activity of ActivitySept;
+                                  index as i
+                                "
+                                class="colorr"
+                              >
+                                <td>{{ activity.nameActivity }}</td>
+                                <td>{{ activity.descriptionActivity }}</td>
+                                <td>
+                                  {{ activity.dayActivity }}/{{
+                                    activity.monthActivity
+                                  }}/{{ activity.yearActivity }}
+                                </td>
+                                <td>
+                                  <div
+                                    class="trueIcon feed-icon round round-sm text-white d-flex align-items-center justify-content-center rounded-circle"
+                                    *ngIf="activity.finish == true"
+                                  >
+                                    <i
+                                      class="bi bi-check-circle"
+                                      ngbTooltip="Activité déjà réalisé"
+                                    ></i>
+                                  </div>
+                                  <div
+                                    class="falseIcon feed-icon round round-sm text-white d-flex align-items-center justify-content-center rounded-circle"
+                                    *ngIf="activity.finish != true"
+                                  >
+                                    <i class="bi bi-circle"></i>
+                                  </div>
+                                </td>
+
+                                <td>
+                                  <span class="table-update">
+                                    <button
+                                      type="button"
+                                      class="btn btn-outline-info btn-rounded btn-sm my-0"
+                                      data-mdb-ripple-color="dark"
+                                      style="margin-right: 2px"
+                                    >
+                                      <i class="bi bi-pencil-square"></i>
+                                    </button>
+                                  </span>
+
+                                  <span class="table-update">
+                                    <button
+                                      type="button"
+                                      class="btn btn-outline-success btn-rounded btn-sm my-0"
+                                      data-mdb-ripple-color="dark"
+                                      style="margin-right: 2px"
+                                    >
+                                      <i class="bi bi-peace"></i>
+                                    </button>
+                                  </span>
+
+                                  <span class="table-remove"
+                                    ><button
+                                      type="button"
+                                      class="btn btn-outline-warning btn-rounded btn-sm my-0"
+                                      style="margin-right: 2px"
+                                    >
+                                      <i class="bi bi-eye-fill"></i></button
+                                  ></span>
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+                    <button class="btn btn-success float-sm-end">
+                      Imprimé
+                    </button>
+                  </div>
+                </ng-template>
+              </li>
+              <li [ngbNavItem]="10">
+                <a ngbNavLink>Octb</a>
+                <ng-template ngbNavContent>
+                  <div class="card TableBody">
+                    <div class="card-header btn-outline-info">
+                      <div class="row">
+                        <div class="col-md-12">
+                          <div class="md-form">
+                            <input
+                              style="height: 2rem"
+                              placeholder="Recherche ..."
+                              type="text"
+                              [(ngModel)]="searchText"
+                              class="form-control"
+                              id="search"
+                              mdbInput
+                            />
+
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="tableebody">
+                      <div class="card-body">
+                        <div class="table-responsive">
+                          <table class="table align-middle">
+                            <thead>
+                              <tr>
+
+                                <th class="title">N° Bénéficiaire</th>
+                                <th class="title">Nom</th>
+                                <th class="title">Prenoms</th>
+                                <th class="title">Date de naissance</th>
+                                <th class="title">Genre</th>
+                                <th class="title">Status</th>
+
+                                <th class="title">Action</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr
+                                *ngFor="
+                                  let activity of ActivityOctb;
+                                  index as i
+                                "
+                                class="colorr"
+                              >
+                                <td>{{ activity.nameActivity }}</td>
+                                <td>{{ activity.descriptionActivity }}</td>
+                                <td>
+                                  {{ activity.dayActivity }}/{{
+                                    activity.monthActivity
+                                  }}/{{ activity.yearActivity }}
+                                </td>
+                                <td>
+                                  <div
+                                    class="trueIcon feed-icon round round-sm text-white d-flex align-items-center justify-content-center rounded-circle"
+                                    *ngIf="activity.finish == true"
+                                  >
+                                    <i
+                                      class="bi bi-check-circle"
+                                      ngbTooltip="Activité déjà réalisé"
+                                    ></i>
+                                  </div>
+                                  <div
+                                    class="falseIcon feed-icon round round-sm text-white d-flex align-items-center justify-content-center rounded-circle"
+                                    *ngIf="activity.finish != true"
+                                  >
+                                    <i class="bi bi-circle"></i>
+                                  </div>
+                                </td>
+
+                                <td>
+                                  <span class="table-update">
+                                    <button
+                                      type="button"
+                                      class="btn btn-outline-info btn-rounded btn-sm my-0"
+                                      data-mdb-ripple-color="dark"
+                                      style="margin-right: 2px"
+                                    >
+                                      <i class="bi bi-pencil-square"></i>
+                                    </button>
+                                  </span>
+
+                                  <span class="table-update">
+                                    <button
+                                      type="button"
+                                      class="btn btn-outline-success btn-rounded btn-sm my-0"
+                                      data-mdb-ripple-color="dark"
+                                      style="margin-right: 2px"
+                                    >
+                                      <i class="bi bi-peace"></i>
+                                    </button>
+                                  </span>
+
+                                  <span class="table-remove"
+                                    ><button
+                                      type="button"
+                                      class="btn btn-outline-warning btn-rounded btn-sm my-0"
+                                      style="margin-right: 2px"
+                                    >
+                                      <i class="bi bi-eye-fill"></i></button
+                                  ></span>
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+                    <button class="btn btn-success float-sm-end">
+                      Imprimé
+                    </button>
+                  </div>
+                </ng-template>
+              </li>
+              <li [ngbNavItem]="11">
+                <a ngbNavLink>Nov</a>
+                <ng-template ngbNavContent>
+                  <div class="card TableBody">
+                    <div class="card-header btn-outline-info">
+                      <div class="row">
+                        <div class="col-md-12">
+                          <div class="md-form">
+                            <input
+                              style="height: 2rem"
+                              placeholder="Recherche ..."
+                              type="text"
+                              [(ngModel)]="searchText"
+                              class="form-control"
+                              id="search"
+                              mdbInput
+                            />
+
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="tableebody">
+                      <div class="card-body">
+                        <div class="table-responsive">
+                          <table class="table align-middle">
+                            <thead>
+                              <tr>
+
+                                <th class="title">N° Bénéficiaire</th>
+                                <th class="title">Nom</th>
+                                <th class="title">Prenoms</th>
+                                <th class="title">Date de naissance</th>
+                                <th class="title">Genre</th>
+                                <th class="title">Status</th>
+
+                                <th class="title">Action</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr
+                                *ngFor="let activity of ActivityNov; index as i"
+                                class="colorr"
+                              >
+                                <td>{{ activity.nameActivity }}</td>
+                                <td>{{ activity.descriptionActivity }}</td>
+                                <td>
+                                  {{ activity.dayActivity }}/{{
+                                    activity.monthActivity
+                                  }}/{{ activity.yearActivity }}
+                                </td>
+                                <td>
+                                  <div
+                                    class="trueIcon feed-icon round round-sm text-white d-flex align-items-center justify-content-center rounded-circle"
+                                    *ngIf="activity.finish == true"
+                                  >
+                                    <i
+                                      class="bi bi-check-circle"
+                                      ngbTooltip="Activité déjà réalisé"
+                                    ></i>
+                                  </div>
+                                  <div
+                                    class="falseIcon feed-icon round round-sm text-white d-flex align-items-center justify-content-center rounded-circle"
+                                    *ngIf="activity.finish != true"
+                                  >
+                                    <i class="bi bi-circle"></i>
+                                  </div>
+                                </td>
+
+                                <td>
+                                  <span class="table-update">
+                                    <button
+                                      type="button"
+                                      class="btn btn-outline-info btn-rounded btn-sm my-0"
+                                      data-mdb-ripple-color="dark"
+                                      style="margin-right: 2px"
+                                    >
+                                      <i class="bi bi-pencil-square"></i>
+                                    </button>
+                                  </span>
+
+                                  <span class="table-update">
+                                    <button
+                                      type="button"
+                                      class="btn btn-outline-success btn-rounded btn-sm my-0"
+                                      data-mdb-ripple-color="dark"
+                                      style="margin-right: 2px"
+                                    >
+                                      <i class="bi bi-peace"></i>
+                                    </button>
+                                  </span>
+
+                                  <span class="table-remove"
+                                    ><button
+                                      type="button"
+                                      class="btn btn-outline-warning btn-rounded btn-sm my-0"
+                                      style="margin-right: 2px"
+                                    >
+                                      <i class="bi bi-eye-fill"></i></button
+                                  ></span>
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+                    <button class="btn btn-success float-sm-end">
+                      Imprimé
+                    </button>
+                  </div>
+                </ng-template>
+              </li>
+              <li [ngbNavItem]="12">
+                <a ngbNavLink>Dec</a>
+                <ng-template ngbNavContent>
+                  <div class="card TableBody">
+                    <div class="card-header btn-outline-info">
+                      <div class="row">
+                        <div class="col-md-12">
+                          <div class="md-form">
+                            <input
+                              style="height: 2rem"
+                              placeholder="Recherche ..."
+                              type="text"
+                              [(ngModel)]="searchText"
+                              class="form-control"
+                              id="search"
+                              mdbInput
+                            />
+
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="tableebody">
+                      <div class="card-body">
+                        <div class="table-responsive">
+                          <table class="table align-middle">
+                            <thead>
+                              <tr>
+
+                                <th class="title">N° Bénéficiaire</th>
+                                <th class="title">Nom</th>
+                                <th class="title">Prenoms</th>
+                                <th class="title">Date de naissance</th>
+                                <th class="title">Genre</th>
+                                <th class="title">Status</th>
+
+                                <th class="title">Action</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr
+                                *ngFor="let activity of ActivityDec; index as i"
+                                class="colorr"
+                              >
+                                <td>{{ activity.nameActivity }}</td>
+                                <td>{{ activity.descriptionActivity }}</td>
+                                <td>
+                                  {{ activity.dayActivity }}/{{
+                                    activity.monthActivity
+                                  }}/{{ activity.yearActivity }}
+                                </td>
+                                <td>
+                                  <div
+                                    class="trueIcon feed-icon round round-sm text-white d-flex align-items-center justify-content-center rounded-circle"
+                                    *ngIf="activity.finish == true"
+                                  >
+                                    <i
+                                      class="bi bi-check-circle"
+                                      ngbTooltip="Activité déjà réalisé"
+                                    ></i>
+                                  </div>
+                                  <div
+                                    class="falseIcon feed-icon round round-sm text-white d-flex align-items-center justify-content-center rounded-circle"
+                                    *ngIf="activity.finish != true"
+                                  >
+                                    <i class="bi bi-circle"></i>
+                                  </div>
+                                </td>
+
+                                <td>
+                                  <span class="table-update">
+                                    <button
+                                      type="button"
+                                      class="btn btn-outline-info btn-rounded btn-sm my-0"
+                                      data-mdb-ripple-color="dark"
+                                      style="margin-right: 2px"
+                                    >
+                                      <i class="bi bi-pencil-square"></i>
+                                    </button>
+                                  </span>
+
+                                  <span class="table-update">
+                                    <button
+                                      type="button"
+                                      class="btn btn-outline-success btn-rounded btn-sm my-0"
+                                      data-mdb-ripple-color="dark"
+                                      style="margin-right: 2px"
+                                    >
+                                      <i class="bi bi-peace"></i>
+                                    </button>
+                                  </span>
+
+                                  <span class="table-remove"
+                                    ><button
+                                      type="button"
+                                      class="btn btn-outline-warning btn-rounded btn-sm my-0"
+                                      style="margin-right: 2px"
+                                    >
+                                      <i class="bi bi-eye-fill"></i></button
+                                  ></span>
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+                    <button class="btn btn-success float-sm-end">
+                      Imprimé
+                    </button>
+                  </div>
+                </ng-template>
+              </li>
+            </ul>
+
+            <div [ngbNavOutlet]="nav" class="mt-2"></div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> -->

@@ -1,0 +1,39 @@
+.trueIcon {
+  background-color: rgb(5, 197, 21);
+  width: 1.9rem;
+  padding-top: 0.12rem;
+  height: 1.9rem;
+}
+.falseIcon {
+  background-color: rgb(5, 197, 181);
+  width: 1.9rem;
+  padding-top: 0.12rem;
+  height: 1.9rem;
+}
+.bi-check-circle {
+  color: rgb(196, 247, 204);
+}
+
+.btn-outline-warning {
+  // width: 4rem;
+  margin-left: 1rem;
+  // height: 28px;
+}
+
+.scroll-bg {
+  background-color: rgba(216, 205, 205, 0.493);
+  margin: 5% auto;
+  border-radius: 11px;
+
+  .scroll-div {
+    overflow: hidden;
+    overflow-y: scroll;
+    height: 236px;
+
+    .scroll-object {
+      margin-top: 1rem;
+      margin-right: 0.5rem;
+      margin-left: 0.5rem;
+    }
+  }
+}
